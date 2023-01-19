@@ -1,0 +1,8 @@
+// 1.19.3	2023-01-19T23:01:20.749354	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+42903ce2470d9181436ccd05f319feefc1b45e4c assets/mffs/blockstates/monazit_ore.json
+3f44dc96789eccd2520db8af9fc51cd9b89c68e3 assets/mffs/lang/en_ud.json
+854bb92bbb684dc5f453f5cd4be006b6b5cfdacf assets/mffs/lang/en_us.json
+ee7e9841f9624e69f1db7e40805338030ff5f1f0 assets/mffs/models/block/monazit_ore.json
+c1e801bed81f9d9954625c9187a7a9b909de0252 assets/mffs/models/item/monazit_ore.json
+8ab689ea8db98ab6034e81258a54a010e9d0d1ce data/mffs/loot_tables/blocks/monazit_ore.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/minecraft/tags/blocks/stone_ore_replaceables.json
