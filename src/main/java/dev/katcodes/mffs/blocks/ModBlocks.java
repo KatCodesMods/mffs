@@ -11,7 +11,7 @@ public class ModBlocks {
             .defaultBlockstate()
             .tag(BlockTags.STONE_ORE_REPLACEABLES)
             .blockstate((ctx, provider) -> provider.simpleBlock(ctx.get()) )
-            .lang("Test Block")
+            .defaultLang()
             .simpleItem()
             .register();
 
