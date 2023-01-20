@@ -1,4 +1,4 @@
-package dev.katcodes.mffs.blocks;
+package dev.katcodes.mffs.common.blocks;
 
 import net.minecraft.world.level.block.Block;
 

@@ -1,8 +1,30 @@
-// 1.19.3	2023-01-19T23:13:52.715724	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.3	2023-01-20T15:02:24.999517	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+3303e5b2a891fb7248db8714e7aba682fb41d121 assets/mffs/blockstates/generator.json
 42903ce2470d9181436ccd05f319feefc1b45e4c assets/mffs/blockstates/monazit_ore.json
-b0dcfed7288bac7f71517e74261303bf482648ab assets/mffs/lang/en_ud.json
-fc8111deef2baf41d3fd6dc6f79717be890cb311 assets/mffs/lang/en_us.json
+e43634ecaf6253e347459ad9aca32b3156325eb6 assets/mffs/lang/en_ud.json
+081ac0894d72bdaf08c911fed2894c6a5b3d0b9d assets/mffs/lang/en_us.json
+a09af35296611a9098d0acb7904f01cca3b335f9 assets/mffs/models/block/generator_off.json
+7241d263e75d1d68aaa4dcedc6d36d4fa21a73af assets/mffs/models/block/generator_on.json
 ee7e9841f9624e69f1db7e40805338030ff5f1f0 assets/mffs/models/block/monazit_ore.json
+cb79b2269c44546cec66955ae8ee54fd1328adee assets/mffs/models/item/generator.json
+b76a611a26fd9fa6b3a0ebfb4dd866c4b7e78bf8 assets/mffs/models/item/monazit.json
 c1e801bed81f9d9954625c9187a7a9b909de0252 assets/mffs/models/item/monazit_ore.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/blocks/ore_rates/dense.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/blocks/ores.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/blocks/ores/monazit.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/blocks/ores_in_ground/stone.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/items/ore_rates/dense.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/items/ores.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/items/ores/monazit.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/items/ores_in_ground/stone.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/forge/tags/items/raw_materials.json
+a3583ee8a19c0c94a6873f486996c8b18f7bbe9b data/mffs/advancements/recipes/misc/monazit_from_ores_monazit_blasting.json
+5e4d182c4987daccd9a789bd70f00f79e78fb491 data/mffs/advancements/recipes/misc/monazit_from_ores_monazit_smelting.json
+561d547df948a3d868b042ea5d3fcb6b2b5c8e78 data/mffs/loot_tables/blocks/generator.json
 8ab689ea8db98ab6034e81258a54a010e9d0d1ce data/mffs/loot_tables/blocks/monazit_ore.json
-061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/minecraft/tags/blocks/stone_ore_replaceables.json
+4005d1e79c2b4e70a75a3501da07b0f047c052be data/mffs/recipes/monazit_from_ores_monazit_blasting.json
+8b9115d407ff3e820403b71e32bc0869bbf78d22 data/mffs/recipes/monazit_from_ores_monazit_smelting.json
+e604960ca3266907019f9ea9cd605d201ef1153d data/mffs/tags/items/monazit.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/minecraft/tags/blocks/mineable/pickaxe.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/minecraft/tags/blocks/needs_stone_tool.json
+061b07e28fac4ed2413d84b57a0bbcd146b9e83b data/minecraft/tags/blocks/overworld_carver_replaceables.json

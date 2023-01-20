@@ -1,3 +1,6 @@
 {
-  "block.mffs.monazit_ore": "Monazit Ore"
+  "block.mffs.generator": "Generator",
+  "block.mffs.monazit_ore": "Monazit Ore",
+  "item.mffs.monazit": "Monazit",
+  "tabs.modid.mffs_tab": "MFFS"
 }

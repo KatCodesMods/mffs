@@ -36,5 +36,20 @@
       <option name="name" value="MavenLocal" />
       <option name="url" value="file:$MAVEN_REPOSITORY$/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="Progwml6's maven" />
+      <option name="name" value="Progwml6's maven" />
+      <option name="url" value="https://dvs1.progwml6.com/files/maven/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Jared's maven" />
+      <option name="name" value="Jared's maven" />
+      <option name="url" value="https://maven.blamejared.com/mezz/jei/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="ModMaven" />
+      <option name="name" value="ModMaven" />
+      <option name="url" value="https://modmaven.dev" />
+    </remote-repository>
   </component>
 </project>
