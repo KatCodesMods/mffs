@@ -19,8 +19,8 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           skip-git-pull: "true"
-          version-file: "gradle.properties"
-          version-path: "app_version"
+          version-file: "version.json"
+          version-path: "version"
       - name: Create Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
