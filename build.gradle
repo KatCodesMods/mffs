@@ -3,8 +3,11 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
+import groovy.json.JsonSlurper
+def inputFile = new File("version.json")
+def json = new JsonSlurper().parseText(inputFile.text)
 
-version = "${app_version}"
+version = json.version
 group = 'dev.katcodes.mffs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'mffs'
 
