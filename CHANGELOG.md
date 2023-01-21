@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/KatCodesMods/MFFS/compare/v0.2.0...v0.2.1) (2023-01-21)
+
+
+### Bug Fixes
+
+* Fix CI issue hopefully ([7d1552f](https://github.com/KatCodesMods/MFFS/commit/7d1552f8a3a6e48628c966e9b734569fea252670))
+
+
+
 # [0.2.0](https://github.com/KatCodesMods/MFFS/compare/v0.1.0...v0.2.0) (2023-01-21)
 
 
