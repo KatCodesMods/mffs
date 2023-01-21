@@ -1,14 +1,19 @@
 package dev.katcodes.mffs.common.blocks;
 
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.blocks.entities.GeneratorEntity;
 import dev.katcodes.mffs.common.tags.ModTags;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 public class ModBlocks {
 
@@ -46,11 +51,24 @@ public class ModBlocks {
                     (ctx, provider) ->
                             registerSimpleActivatableMachine(ctx.get(), "generator", provider))
             .defaultLang()
+            .recipe((ctx, prov) -> {
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.getEntry())
+                        .pattern("III")
+                        .pattern("IMI")
+                        .pattern("III")
+                        .define('I', Tags.Items.INGOTS_IRON)
+                        .define('M', ModTags.ItemTags.MONAZIT)
+
+                        .unlockedBy("has_monazit", RegistrateRecipeProvider.has(ModTags.ItemTags.MONAZIT))
+                        .save(prov);
+
+            })
             .item()
             .model((ctx, provider) -> provider.withExistingParent(ctx.getName(), provider.modLoc("block/generator_off")))
             .build()
             .blockEntity(GeneratorEntity::new)
             .build()
+
             .register();
 
     public static void initialize() {
