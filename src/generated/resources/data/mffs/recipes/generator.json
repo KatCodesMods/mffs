@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "M": {
+      "tag": "mffs:monazit"
+    }
+  },
+  "pattern": [
+    "III",
+    "IMI",
+    "III"
+  ],
+  "result": {
+    "item": "mffs:generator"
+  }
+}
