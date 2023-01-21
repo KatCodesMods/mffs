@@ -1,4 +1,13 @@
-# 0.1.0 (2023-01-21)
+# [0.2.0](https://github.com/KatCodesMods/MFFS/compare/v0.1.0...v0.2.0) (2023-01-21)
+
+
+### Features
+
+* **network:** Add the base class for network ([53e1661](https://github.com/KatCodesMods/MFFS/commit/53e166192df8ca92f7d4e7c361d58878efdbabc0))
+
+
+
+# [0.1.0](https://github.com/KatCodesMods/MFFS/compare/b9472d7bb78f1579bf2755be226d5930db2eabe6...v0.1.0) (2023-01-21)
 
 
 ### Bug Fixes
