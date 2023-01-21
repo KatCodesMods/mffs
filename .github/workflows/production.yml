@@ -1,9 +1,10 @@
 name: Run production changelogs
 run-name: Run Production changelogs
 on:
-  - push:
-      branches:
-        - production
+  push:
+    branches:
+      - 'production'
+      - 'releases/**'
 jobs:
   conventional-commits:
     runs-on: ubuntu-latest
