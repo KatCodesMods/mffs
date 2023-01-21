@@ -4,22 +4,21 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.client.gui.widgets.VerticalGuage;
-import dev.katcodes.mffs.common.inventory.GeneratorContainer;
+import dev.katcodes.mffs.common.inventory.GeneratorMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.ContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ChestMenu;
 
-public class GeneratorScreen extends AbstractContainerScreen<GeneratorContainer> {
+public class GeneratorScreen extends AbstractContainerScreen<GeneratorMenu> {
     private boolean widthTooNarrow;
     private VerticalGuage guage;
     private final ResourceLocation texture = new ResourceLocation(MFFSMod.MODID, "textures/gui/generator.png");
     private ResourceLocation FORGE_GUAGE=new ResourceLocation(MFFSMod.MODID,"textures/gui/widgets/forge_guage.png");
 
-    public GeneratorScreen(GeneratorContainer p_97741_, Inventory p_97742_, Component p_97743_) {
+    public GeneratorScreen(GeneratorMenu p_97741_, Inventory p_97742_, Component p_97743_) {
         super(p_97741_, p_97742_, p_97743_);
     }
 
@@ -28,10 +27,15 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorContainer>
         super.init();
         this.widthTooNarrow = this.width < 379;
         guage=new VerticalGuage(this.getGuiLeft()+110,this.getGuiTop()+20,14,42,1,0,17,0,14,42,FORGE_GUAGE);
-        // TODO: Add guage
-        guage.setMax(1000);
+        guage.setMax(this.menu.getMaxEnergy()).setCurrent(this.menu.getEnergy());
         this.addRenderableWidget(guage);
 
+    }
+
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+        guage.setMax(this.menu.getMaxEnergy()).setCurrent(this.menu.getEnergy());
     }
 
     @Override
@@ -49,5 +53,12 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorContainer>
         int i = this.leftPos;
         int j = this.topPos;
         this.blit(p_97787_, i, j, 0, 0, this.imageWidth, this.imageHeight);
+
+        if(this.menu.is_burning()) {
+            int k = this.menu.getBurnLeftScaled();
+            this.blit(p_97787_,i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+        }
+        int l = this.menu.getCookProgressionScaled();
+        this.blit(p_97787_,i + 79, j + 34, 176, 14, l + 1, 16);
     }
 }

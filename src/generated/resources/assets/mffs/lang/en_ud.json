@@ -1,6 +1,8 @@
 {
   "block.mffs.generator": "ɹoʇɐɹǝuǝ⅁",
   "block.mffs.monazit_ore": "ǝɹO ʇızɐuoW",
+  "container.mffs.generator": "ɹoʇɐɹǝuǝ⅁",
   "item.mffs.monazit": "ʇızɐuoW",
-  "tabs.modid.mffs_tab": "SℲℲW"
+  "tabs.modid.mffs_tab": "SℲℲW",
+  "tabs.modid.mffs_tab.tooltip": "Ⅎᴚ %s/%s :ʎbɹǝuƎ"
 }

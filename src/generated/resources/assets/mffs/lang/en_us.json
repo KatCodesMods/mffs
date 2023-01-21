@@ -1,6 +1,8 @@
 {
   "block.mffs.generator": "Generator",
   "block.mffs.monazit_ore": "Monazit Ore",
+  "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
-  "tabs.modid.mffs_tab": "MFFS"
+  "tabs.modid.mffs_tab": "MFFS",
+  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF"
 }

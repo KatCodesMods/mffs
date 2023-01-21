@@ -1,6 +1,8 @@
 package dev.katcodes.mffs.common.blocks.entities;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import dev.katcodes.mffs.common.blocks.GeneratorBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import static dev.katcodes.mffs.common.blocks.ModBlocks.GENERATOR;

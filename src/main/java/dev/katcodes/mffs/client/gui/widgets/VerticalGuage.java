@@ -3,16 +3,19 @@ package dev.katcodes.mffs.client.gui.widgets;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import dev.katcodes.mffs.common.misc.ModTranslations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.tooltip.TooltipComponent;
 
 public class VerticalGuage extends AbstractWidget {
     private ResourceLocation guageImage;
@@ -51,9 +54,14 @@ public class VerticalGuage extends AbstractWidget {
 
     public VerticalGuage setCurrent(int current) {
         this.current = current;
+        this.setTooltip(Tooltip.create(Component.translatable(ModTranslations.GUAGE_TOOLTIP,current,max)));
         return this;
     }
 
+    @Override
+    protected boolean isValidClickButton(int p_93652_) {
+        return false;
+    }
 
     public float getPercent() {
         return ((current - min) * 100f) / (max - min);
@@ -92,8 +100,11 @@ public class VerticalGuage extends AbstractWidget {
         }
     }
 
+
+
+
     @Override
     protected void updateWidgetNarration(NarrationElementOutput p_259858_) {
-        p_259858_.add(NarratedElementType.USAGE,"");
+        p_259858_.add(NarratedElementType.USAGE, Float.toString(getPercent())+" percent");
     }
 }
