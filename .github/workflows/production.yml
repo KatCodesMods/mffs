@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Conventional Changelog Action
+        id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.github_token }}
@@ -27,6 +28,7 @@ jobs:
           version-path: "version"
       - name: Create Release
         uses: softprops/action-gh-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
