@@ -26,11 +26,11 @@ jobs:
           version-file: "version.json"
           version-path: "version"
       - name: Create Release
-        uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
           tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
+          name: ${{ steps.changelog.outputs.tag }}
+          discussion_category_name: 'Release'
           body: ${{ steps.changelog.outputs.clean_changelog }}
