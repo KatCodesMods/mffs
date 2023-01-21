@@ -14,7 +14,7 @@ MFFS is a mod for Minecraft that adds a modular forcefield system to the game. I
 
 ## Contributing
 
-If you would like to contribute to the development of MFFS, please read the [contributing guidelines](CONTRIBUTING.md) before submitting a pull request.
+If you would like to contribute to the development of MFFS, please read the [contributing guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a pull request.
 
 ## Questions? Issues?
 
