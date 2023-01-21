@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/KatCodesMods/MFFS/compare/v0.2.1...v0.2.2) (2023-01-21)
+
+
+### Bug Fixes
+
+* **ci:** Added missing id ([4224292](https://github.com/KatCodesMods/MFFS/commit/422429279fcd2b1828428cc8c45d859b6f4d1ed3))
+
+
+
 ## [0.2.1](https://github.com/KatCodesMods/MFFS/compare/v0.2.0...v0.2.1) (2023-01-21)
 
 
