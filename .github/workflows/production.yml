@@ -1,5 +1,6 @@
 name: Run production changelogs
 run-name: Run Production changelogs
+permissions: read-all|write-all
 on:
   push:
     branches:
