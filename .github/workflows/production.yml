@@ -1,14 +1,17 @@
 name: Run production changelogs
 run-name: Run Production changelogs
-permissions: read-all|write-all
+
 on:
   push:
     branches:
       - 'production'
       - 'releases/**'
+
+permissions: write-all
 jobs:
   conventional-commits:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
