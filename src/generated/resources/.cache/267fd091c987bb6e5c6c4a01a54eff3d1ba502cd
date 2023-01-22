@@ -1,11 +1,19 @@
-// 1.19.3	2023-01-21T16:51:43.769925	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.3	2023-01-22T14:39:31.050126	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+7904368d2437c903b6e1cb3acd28510fc61dad5b assets/mffs/blockstates/capacitor.json
+864ef5646932c8f1a090431fa93a58a9b694f51f assets/mffs/blockstates/extractor.json
 3303e5b2a891fb7248db8714e7aba682fb41d121 assets/mffs/blockstates/generator.json
 42903ce2470d9181436ccd05f319feefc1b45e4c assets/mffs/blockstates/monazit_ore.json
-69a8bbf172badc1d08022653514e6d155e65c687 assets/mffs/lang/en_ud.json
-a7daf7ebed572206f99d2b439cc57d93c51026fb assets/mffs/lang/en_us.json
+736eb62b8a83dab1caa20f34e9d3f3d146113330 assets/mffs/lang/en_ud.json
+f9ea2e779f0a7eb483b7edd0c87f5d15c5225188 assets/mffs/lang/en_us.json
+3d3904626a10aebddfef431316d222c4e8ab92db assets/mffs/models/block/capacitor_off.json
+2da63eaab561ca7a323ba432613e3e676178703d assets/mffs/models/block/capacitor_on.json
+b7c8b0849c4c1d9f991bd6ceff7bb64c3342226a assets/mffs/models/block/extractor_off.json
+9e0dff508d69e43f929087b012d24d36949a31b1 assets/mffs/models/block/extractor_on.json
 a09af35296611a9098d0acb7904f01cca3b335f9 assets/mffs/models/block/generator_off.json
 7241d263e75d1d68aaa4dcedc6d36d4fa21a73af assets/mffs/models/block/generator_on.json
 ee7e9841f9624e69f1db7e40805338030ff5f1f0 assets/mffs/models/block/monazit_ore.json
+2b7606bb2454106bd86521e80f740bda74e5a2e2 assets/mffs/models/item/capacitor.json
+46b068d765dbda3a951f724b16b9e0f5257dbe83 assets/mffs/models/item/extractor.json
 cb79b2269c44546cec66955ae8ee54fd1328adee assets/mffs/models/item/generator.json
 b76a611a26fd9fa6b3a0ebfb4dd866c4b7e78bf8 assets/mffs/models/item/monazit.json
 c1e801bed81f9d9954625c9187a7a9b909de0252 assets/mffs/models/item/monazit_ore.json
@@ -21,6 +29,8 @@ c1e801bed81f9d9954625c9187a7a9b909de0252 assets/mffs/models/item/monazit_ore.jso
 d1d5a03f7454b1879f953af68c287b900f53c225 data/mffs/advancements/recipes/misc/generator.json
 a3583ee8a19c0c94a6873f486996c8b18f7bbe9b data/mffs/advancements/recipes/misc/monazit_from_ores_monazit_blasting.json
 5e4d182c4987daccd9a789bd70f00f79e78fb491 data/mffs/advancements/recipes/misc/monazit_from_ores_monazit_smelting.json
+eaf10284d6c50ffd31a9e714db001ce021074747 data/mffs/loot_tables/blocks/capacitor.json
+1c940c78601d6619389787778115a6b37d058b8a data/mffs/loot_tables/blocks/extractor.json
 561d547df948a3d868b042ea5d3fcb6b2b5c8e78 data/mffs/loot_tables/blocks/generator.json
 8ab689ea8db98ab6034e81258a54a010e9d0d1ce data/mffs/loot_tables/blocks/monazit_ore.json
 3584b499158d67e1653e1ac011256e2946c1456b data/mffs/recipes/generator.json

@@ -19,19 +19,14 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.common.libs;
 
-import dev.katcodes.mffs.MFFSMod;
+public class LibBlocks {
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
+    public static final String MONAZIT_ORE="monazit_ore";
+    public static final String GENERATOR="generator";
 
-    public static void initialize() {
+    public static final String CAPACITOR="capacitor";
 
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
-    }
+    public static final String EXTRACTOR="extractor";
 }

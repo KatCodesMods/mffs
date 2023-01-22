@@ -19,19 +19,19 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.api;
 
-import dev.katcodes.mffs.MFFSMod;
+import com.mojang.serialization.Codec;
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
+/**
+ * The Machine type.
+ */
+public enum MachineType {
+    GENERATOR, CAPACITOR, EXTRACTOR;
 
-    public static void initialize() {
-
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
-    }
+    /**
+     * The constant MACHINE_TYPE_CODEC.
+     * This is used to encode and decode the machine type.
+     */
+    public static final Codec<MachineType> MACHINE_TYPE_CODEC = Codec.STRING.xmap(MachineType::valueOf, MachineType::name);
 }

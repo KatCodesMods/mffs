@@ -19,19 +19,24 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.common.blocks;
 
-import dev.katcodes.mffs.MFFSMod;
+import dev.katcodes.mffs.common.blocks.entities.ModBlockEntities;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
 
-    public static void initialize() {
+public class CapacitorBlock extends AbstractMachineBlock {
 
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
+    protected CapacitorBlock(Properties p_49224_) {
+        super(p_49224_);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return ModBlockEntities.CAPACITOR_ENTITY.create(blockPos, blockState);
     }
 }

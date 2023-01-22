@@ -19,19 +19,30 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.common.items;
 
-import dev.katcodes.mffs.MFFSMod;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
+import java.util.UUID;
 
-    public static void initialize() {
+public class CardItem extends ModItem{
+    public CardItem(Properties p_41383_) {
+        super(p_41383_);
+    }
 
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
+
+    public static UUID getNetworkID(ItemStack card) {
+        if(card.hasTag() && card.getTag().contains("networkID")) {
+            return UUID.fromString(card.getTag().getString("networkID"));
+        }
+        return null;
+    }
+
+    public static void setNetworkID(ItemStack card, UUID networkID) {
+        if(!card.hasTag()) {
+            card.setTag(new CompoundTag());
+        }
+        card.getTag().putString("networkID", networkID.toString());
     }
 }
