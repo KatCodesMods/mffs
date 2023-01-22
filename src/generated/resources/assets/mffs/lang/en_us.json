@@ -1,4 +1,6 @@
 {
+  "block.mffs.capacitor": "Capacitor",
+  "block.mffs.extractor": "Extractor",
   "block.mffs.generator": "Generator",
   "block.mffs.monazit_ore": "Monazit Ore",
   "container.mffs.generator": "Generator",

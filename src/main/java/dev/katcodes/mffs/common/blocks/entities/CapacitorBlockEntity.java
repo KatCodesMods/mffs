@@ -19,19 +19,22 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.common.blocks.entities;
 
-import dev.katcodes.mffs.MFFSMod;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
+import java.util.UUID;
 
-    public static void initialize() {
+public class CapacitorBlockEntity extends NetworkedBlockEntities {
 
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
+    public CapacitorBlockEntity(BlockEntityType<?> p_155228_, BlockPos p_155229_, BlockState p_155230_) {
+        super(p_155228_, p_155229_, p_155230_);
+    }
+
+    @Override
+    public UUID getNetworkId() {
+        return null;
     }
 }

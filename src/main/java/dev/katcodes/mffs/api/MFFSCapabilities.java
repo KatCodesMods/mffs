@@ -19,19 +19,22 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.misc;
+package dev.katcodes.mffs.api;
 
-import dev.katcodes.mffs.MFFSMod;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.capabilities.CapabilityToken;
 
-public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
-    public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
-    public static final String GENERATOR_CONTAINER="container.mffs.generator";
+/**
+ * The type Mffs capabilities.
+ * This is used to register the capabilities.
+ */
+public class MFFSCapabilities {
 
-    public static void initialize() {
-
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
-        MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
-        MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
-    }
+    /**
+     * The constant FORCE_ENERGY_CAPABILITY.
+     * This is used to register the force energy capability.
+     */
+    public static final Capability<IForceEnergyCapability> FORCE_ENERGY_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {
+    });
 }

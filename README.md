@@ -1,6 +1,6 @@
 # Modular Forcefield System (MFFS) for Minecraft 1.19.3
 
-![Compatible with Minecraft 1.19.3](https://img.shields.io/badge/minecraft-1.19.3-green?style=for-the-badge&logo=minecraft&logoColor=white)
+![Compatible with Minecraft 1.19.3](https://img.shields.io/badge/minecraft-1.19.3-green?style=for-the-badge&logo=minecraft&logoColor=white)[![Crowdin](https://badges.crowdin.net/mffs/localized.svg)](https://crowdin.com/project/mffs)
 
 ## About
 
