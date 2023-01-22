@@ -7,6 +7,8 @@ import dev.katcodes.mffs.common.items.ModItems;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import dev.katcodes.mffs.common.storage.MFFSEnergyStorage;
 import dev.katcodes.mffs.common.tags.ModTags;
+import dev.katcodes.mffs.common.world.NetworkWorldData;
+import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -44,6 +46,7 @@ import net.minecraftforge.items.wrapper.CombinedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.Console;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GeneratorEntity extends BlockEntity  implements MenuProvider {
@@ -297,6 +300,14 @@ public class GeneratorEntity extends BlockEntity  implements MenuProvider {
             --blockEntity.burnTime;
         }
         if (!level.isClientSide) {
+            NetworkWorldData test=NetworkWorldData.get();
+            if(test.getNetworkCount()<5) {
+                NetworkData temp = test.createNetwork(0, 100);
+                System.out.println(temp.getUuid().toString());
+                System.out.println(test.getNetworkCount());
+
+            }
+
             blockEntity.energyOptional.ifPresent(iEnergyStorage -> {
                 blockEntity.fuelOptional.ifPresent(iFuelHandler -> blockEntity.crystalOptional.ifPresent(iMonazitHandler -> {
                             boolean flag = blockEntity.isBurning();
