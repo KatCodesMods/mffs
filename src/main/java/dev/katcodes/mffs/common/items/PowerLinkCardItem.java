@@ -21,8 +21,14 @@
 
 package dev.katcodes.mffs.common.items;
 
+import dev.katcodes.mffs.common.misc.ModTranslations;
+import dev.katcodes.mffs.common.world.NetworkWorldData;
+import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -38,8 +44,26 @@ public class PowerLinkCardItem extends CardItem {
     }
 
     @Override
+    public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
+        if(p_41433_.isShiftKeyDown()) {
+            if(!p_41432_.isClientSide) {
+                if (!CardItem.getNetworkID(p_41433_.getItemInHand(p_41434_)).isPresent()) {
+                    NetworkData data=NetworkWorldData.get().createNetwork(p_41432_,0,1000);
+                    CardItem.setNetworkID(p_41433_.getItemInHand(p_41434_), data.getNetworkID());
+                }
+            }
+        }
+        return super.use(p_41432_, p_41433_, p_41434_);
+    }
+
+    @Override
     public void appendHoverText(ItemStack p_41421_, @Nullable Level p_41422_, List<Component> p_41423_, TooltipFlag p_41424_) {
         super.appendHoverText(p_41421_, p_41422_, p_41423_, p_41424_);
-
+        if(CardItem.getNetworkID(p_41421_).isPresent()) {
+            p_41423_.add(Component.translatable(ModTranslations.POWER_LINK_TOOLTIP, NetworkWorldData.getClientInstance().getNetwork(CardItem.getNetworkID(p_41421_).get())));
+        }
+        else {
+            p_41423_.add(Component.translatable(ModTranslations.POWER_LINK_EMPTY));
+        }
     }
 }

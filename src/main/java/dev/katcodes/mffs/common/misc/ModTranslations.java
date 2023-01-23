@@ -28,10 +28,15 @@ public class ModTranslations {
     public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
     public static final String GENERATOR_CONTAINER="container.mffs.generator";
 
+    public static final String POWER_LINK_TOOLTIP="tooltip.mffs.power_link_card.network_name";
+    public static final String POWER_LINK_EMPTY="tooltip.mffs.power_link_card.empty";
+
     public static void initialize() {
 
         MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
         MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
         MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
+        MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_TOOLTIP, "Network Name: %s");
+        MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_EMPTY, "Not Connected");
     }
 }

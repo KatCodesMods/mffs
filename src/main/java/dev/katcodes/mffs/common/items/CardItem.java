@@ -24,6 +24,7 @@ package dev.katcodes.mffs.common.items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class CardItem extends ModItem{
@@ -32,11 +33,11 @@ public class CardItem extends ModItem{
     }
 
 
-    public static UUID getNetworkID(ItemStack card) {
+    public static Optional<UUID> getNetworkID(ItemStack card) {
         if(card.hasTag() && card.getTag().contains("networkID")) {
-            return UUID.fromString(card.getTag().getString("networkID"));
+            return Optional.of(UUID.fromString(card.getTag().getString("networkID")));
         }
-        return null;
+        return Optional.empty();
     }
 
     public static void setNetworkID(ItemStack card, UUID networkID) {
