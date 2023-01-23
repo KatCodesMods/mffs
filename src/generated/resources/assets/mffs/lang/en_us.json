@@ -5,6 +5,7 @@
   "block.mffs.monazit_ore": "Monazit Ore",
   "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
+  "item.mffs.power_link_card": "Power Link Card",
   "tabs.modid.mffs_tab": "MFFS",
   "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF"
 }

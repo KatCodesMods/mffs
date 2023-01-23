@@ -21,6 +21,8 @@
 
 package dev.katcodes.mffs.common.world;
 
+import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
+import dev.katcodes.mffs.common.networking.packets.NetworkNamesPacket;
 import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
@@ -31,6 +33,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.apache.logging.log4j.core.jmx.Server;
 
@@ -40,6 +43,22 @@ import java.util.UUID;
 
 public class NetworkWorldData extends SavedData {
 
+    public static NetworkWorldData CLIENT_INSTANCE=new NetworkWorldData();
+
+    public static NetworkWorldData getClientInstance() {
+        return CLIENT_INSTANCE;
+    }
+
+    public void clear() {
+        networkData.clear();
+    }
+
+    public void add(NetworkData data) {
+        this.networkData.put(data.getUuid(), data);
+    }
+    public void addAll(Map<UUID, NetworkData> data) {
+        this.networkData.putAll(data);
+    }
 
     public NetworkWorldData() {
     }
@@ -65,11 +84,19 @@ public class NetworkWorldData extends SavedData {
     }
     private Map<UUID, NetworkData> networkData = new HashMap<>();
 
-    public NetworkData createNetwork(int energy, int capacity) {
+    public NetworkData createNetwork(Level level,int energy, int capacity) {
         UUID uuid = UUID.randomUUID();
-        NetworkData data = new NetworkData(uuid, energy, capacity, new HashMap<>());
+        NetworkData data = new NetworkData(uuid, energy, capacity, new HashMap<>(),uuid.toString());
         networkData.put(uuid, data);
         this.setDirty();
+        if(!level.isClientSide) {
+            Map<UUID,String> names = new HashMap<>();
+            networkData.forEach((uuid1, networkData) -> {
+                names.put(uuid1, networkData.getName());
+            });
+            NetworkNamesPacket packet = new NetworkNamesPacket(names);
+            MFFSPacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), packet);
+        }
         return data;
     }
 
@@ -87,6 +114,10 @@ networkData.forEach((uuid, data) -> {
         });
         p_77763_.put("networkData", listTag);
         return p_77763_;
+    }
+
+    public Map<UUID, NetworkData> networks() {
+        return networkData;
     }
 }
 

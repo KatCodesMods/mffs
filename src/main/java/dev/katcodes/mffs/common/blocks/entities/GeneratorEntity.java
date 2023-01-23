@@ -201,7 +201,7 @@ public class GeneratorEntity extends BlockEntity implements MenuProvider {
         if (!level.isClientSide) {
             NetworkWorldData test = NetworkWorldData.get();
             if (test.getNetworkCount() < 5) {
-                NetworkData temp = test.createNetwork(0, 100);
+                NetworkData temp = test.createNetwork(level,0, 100);
                 temp.getNetworkMachines().put(MachineType.GENERATOR, new ArrayList<>());
                 temp.getNetworkMachines().get(MachineType.GENERATOR).add(GlobalPos.of(level.dimension(), pos));
                 System.out.println(temp.getUuid().toString());
