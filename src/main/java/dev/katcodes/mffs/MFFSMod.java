@@ -29,6 +29,7 @@ import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.inventory.ModMenus;
 import dev.katcodes.mffs.common.items.ModItems;
 import dev.katcodes.mffs.common.misc.ModTranslations;
+import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
@@ -79,6 +80,8 @@ public class MFFSMod
         ModItems.initialize();
         ModTranslations.initialize();
         ModMenus.initialize();
+        MFFSPacketHandler.init();
+        MinecraftForge.EVENT_BUS.register(new MFFSPacketHandler());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

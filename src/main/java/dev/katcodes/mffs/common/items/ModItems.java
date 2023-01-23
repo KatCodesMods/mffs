@@ -25,6 +25,7 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.blocks.ModBlocks;
+import dev.katcodes.mffs.common.libs.LibItems;
 import dev.katcodes.mffs.common.tags.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -34,7 +35,7 @@ import net.minecraft.world.item.Item;
 public class ModItems {
 
     // Simple Items
-    public static final ItemEntry<Item> MONAZIT = MFFSMod.REGISTRATE.get().object("monazit")
+    public static final ItemEntry<Item> MONAZIT = MFFSMod.REGISTRATE.get().object(LibItems.MONAZIT)
             .item(Item::new)
             .defaultLang()
             .tag(ModTags.ItemTags.MONAZIT)
@@ -47,11 +48,21 @@ public class ModItems {
             .register();
 
 
+    // Cards
+    public static final ItemEntry<PowerLinkCardItem> POWER_LINK_CARD = MFFSMod.REGISTRATE.get().object(LibItems.POWER_LINK_CARD)
+            .item(PowerLinkCardItem::new)
+            .defaultLang()
+            .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.mcLoc("item/generated"))
+                    .texture("layer0", prov.modLoc("item/cards/" + ctx.getName())))
+            .register();
+
     // Item Blocks
 
     public static ItemEntry<BlockItem> MONAZIT_ORE_ITEM = (ItemEntry<BlockItem>) ModBlocks.MONAZIT_ORE.<Item, BlockItem>getSibling(Registries.ITEM);
     public static ItemEntry<BlockItem> GENERATOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.GENERATOR.<Item, BlockItem>getSibling(Registries.ITEM);
 
+    public static ItemEntry<BlockItem> CAPACITOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.CAPACITOR.<Item, BlockItem>getSibling(Registries.ITEM);
+    public static ItemEntry<BlockItem> EXTRACTOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.EXTRACTOR.<Item, BlockItem>getSibling(Registries.ITEM);
 
     public static void initialize() {
 

@@ -40,14 +40,21 @@ public class NetworkData  implements IForceEnergyCapability {
     private UUID uuid;
     private int energy;
     private int capacity;
+    private String name;
 
     private Map<MachineType, List<GlobalPos>> networkMachines;
 
-    public NetworkData(UUID uuid, int energy, int capacity, Map<MachineType, List<GlobalPos>> networkMachines) {
+    public NetworkData(UUID uuid, int energy, int capacity, Map<MachineType, List<GlobalPos>> networkMachines, String name) {
         this.uuid = uuid;
         this.energy = energy;
         this.capacity = capacity;
         this.networkMachines=networkMachines;
+        this.name = name;
+    }
+
+    public NetworkData(UUID uuid, String name) {
+        this.uuid=uuid;
+        this.name=name;
     }
 
     public UUID getUuid() {
@@ -80,7 +87,8 @@ public class NetworkData  implements IForceEnergyCapability {
                     UUIDUtil.CODEC.fieldOf("uuid").forGetter(NetworkData::getUuid),
                     Codec.INT.fieldOf("energy").forGetter(NetworkData::getEnergy),
                     Codec.INT.fieldOf("capacity").forGetter(NetworkData::getCapacity),
-                    NETWORK_MACHINES_CODEC.fieldOf("machines").forGetter(NetworkData::getNetworkMachines)
+                    NETWORK_MACHINES_CODEC.fieldOf("machines").forGetter(NetworkData::getNetworkMachines),
+                    Codec.STRING.fieldOf("name").forGetter(NetworkData::getName)
 
             ).apply(instance, NetworkData::new));
 
@@ -129,5 +137,13 @@ public class NetworkData  implements IForceEnergyCapability {
     @Override
     public boolean canReceive() {
         return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
