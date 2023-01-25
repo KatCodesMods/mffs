@@ -36,9 +36,9 @@ jobs:
             - v1-dependencies-
 
       - run:
-        name: Dependencies
-        no_output_timeout: 30m
-        command: gradle dependencies
+          name: Dependencies
+          no_output_timeout: 30m
+          command: gradle dependencies
 
       - save_cache:
           paths:
