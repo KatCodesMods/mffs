@@ -21,7 +21,7 @@ jobs:
 
     environment:
       # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
+      JVM_OPTS: -Xmx6400m
       TERM: dumb
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
@@ -35,11 +35,12 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: chmod +x gradlew
       - run: 
           no_output_timeout: 30m
-          command: gradle build
-      - run: gradle runData
-      - run: gradle build
+          command: ./gradlew build --debug
+      - run: ./gradlew runData
+      - run: ./gradlew build
       
       - save_cache:
           paths:
@@ -51,6 +52,6 @@ jobs:
 
       - store_artifacts:
                 path: /build/libs/
-      - run: gradle runGameTestServer 
+      - run: ./gradlew runGameTestServer 
       - store_test_results:
               path: /run/tests/
