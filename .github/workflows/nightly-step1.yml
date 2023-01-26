@@ -70,7 +70,6 @@ jobs:
           echo "Packages URL: ${{ env.GH_PKG_URL }}"
   tests:
     name: Gradle Tests
-    id: gradle_tests
     runs-on: ubuntu-22.04
     needs: [vars]
     steps:
