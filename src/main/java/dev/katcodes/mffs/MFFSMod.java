@@ -90,13 +90,16 @@ public class MFFSMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        if(System.getenv().getOrDefault("MFFS_TESTS","false").equalsIgnoreCase("true")) {
+        //if(System.getenv().getOrDefault("MFFS_TESTS","false").equalsIgnoreCase("true")) {
             try {
+                LOGGER.info("Setting JUNIT Test reporter");
                 GlobalTestReporter.replaceWith(new JUnitLikeTestReporter(new File("tests/tests.xml")));
             } catch (ParserConfigurationException e) {
                 throw new RuntimeException(e);
             }
-        }
+        //} else {
+        //    LOGGER.info("Using Normal Test Reporter");
+        //}
         // Register the item to a creative tab
 //        modEventBus.addListener(this::registerTabs);
     }
