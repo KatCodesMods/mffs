@@ -53,7 +53,7 @@ jobs:
       - name: Get Sha
         id: sha
         run: |
-          sha_new = $(git rev-parse HEAD)
+          export sha_new=$(git rev-parse HEAD)
           echo $sha_new
           echo "::set-output name=SHA::$sha_new"
       - run:

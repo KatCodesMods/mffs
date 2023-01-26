@@ -1,11 +1,18 @@
 package dev.katcodes.mffs.test;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.gametest.framework.GameTestAssertPosException;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class GameTestUtils {
 
-    public static void assertContainerEmptyAtTickCapacity(GameTestHelper helper, BlockEntity blockEntity, int ticks) {
-
+    public static void assertContainerEmptyAtTickCapacity(GameTestHelper helper, BlockPos pos, int ticks) {
+        helper.runAtTickTime(ticks, ()-> {
+            BlockEntity entity = helper.getBlockEntity(pos);
+            if(!(entity instanceof BlockEntity)) {
+                throw new GameTestAssertPosException("Block Entity not found at position",pos, helper.absolutePos(pos),helper.getTick());
+            }
+        });
     }
 }
