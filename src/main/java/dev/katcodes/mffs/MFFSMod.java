@@ -30,7 +30,11 @@ import dev.katcodes.mffs.common.inventory.ModMenus;
 import dev.katcodes.mffs.common.items.ModItems;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
+import dev.katcodes.mffs.test.GameTestUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.gametest.framework.GameTestListener;
+import net.minecraft.gametest.framework.GlobalTestReporter;
+import net.minecraft.gametest.framework.JUnitLikeTestReporter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -45,8 +49,12 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MFFSMod.MODID)
@@ -85,7 +93,13 @@ public class MFFSMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
+        if(System.getenv().getOrDefault("MFFS_TESTS","false").equalsIgnoreCase("true")) {
+            try {
+                GlobalTestReporter.replaceWith(new JUnitLikeTestReporter(new File("tests/tests.xml")));
+            } catch (ParserConfigurationException e) {
+                throw new RuntimeException(e);
+            }
+        }
         // Register the item to a creative tab
 //        modEventBus.addListener(this::registerTabs);
     }
