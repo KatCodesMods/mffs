@@ -112,6 +112,6 @@ jobs:
           mkdir run/tests
 
       - name: Generate Datagen Assets
-        run: ./gradlew runData
+        run: ./gradlew :runData
         env:
           MFFS_VERSION: ${{ needs.vars.outputs.version }}

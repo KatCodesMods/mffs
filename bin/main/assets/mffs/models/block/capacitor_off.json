@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "mffs:block/capacitor/front_off",
-    "side": "mffs:block/capacitor/side_off",
-    "top": "mffs:block/capacitor/side_off"
-  }
-}

@@ -7,5 +7,7 @@
   "item.mffs.monazit": "ʇızɐuoW",
   "item.mffs.power_link_card": "pɹɐƆ ʞuıꞀ ɹǝʍoԀ",
   "tabs.modid.mffs_tab": "SℲℲW",
-  "tabs.modid.mffs_tab.tooltip": "Ⅎᴚ %s/%s :ʎbɹǝuƎ"
+  "tabs.modid.mffs_tab.tooltip": "Ⅎᴚ %s/%s :ʎbɹǝuƎ",
+  "tooltip.mffs.power_link_card.empty": "pǝʇɔǝuuoƆ ʇoN",
+  "tooltip.mffs.power_link_card.network_name": "%s :ǝɯɐN ʞɹoʍʇǝN"
 }

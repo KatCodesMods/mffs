@@ -30,9 +30,7 @@ import dev.katcodes.mffs.common.inventory.ModMenus;
 import dev.katcodes.mffs.common.items.ModItems;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
-import dev.katcodes.mffs.test.GameTestUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.gametest.framework.GameTestListener;
 import net.minecraft.gametest.framework.GlobalTestReporter;
 import net.minecraft.gametest.framework.JUnitLikeTestReporter;
 import net.minecraft.network.chat.Component;
@@ -49,7 +47,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
