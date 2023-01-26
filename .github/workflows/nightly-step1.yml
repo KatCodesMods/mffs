@@ -1,0 +1,49 @@
+name: Gradle Step 1
+
+on:
+  workflow_dispatch:
+    inputs:
+      diagnostic_mode:
+        description: Diagnostic Mode
+        type: boolean
+        default: false
+        required: true
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - v*
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".github/**/*"
+permissions: write-all
+jobs:
+  changelog_version:
+    name: Set Changelog and version
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+          skip-git-pull: "true"
+          version-file: "version.json"
+          version-path: "version"
+          skip-ci: false
+  test:
+    name: Check what the output here is
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check git
+        run: git log
