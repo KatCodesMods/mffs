@@ -7,5 +7,7 @@
   "item.mffs.monazit": "Monazit",
   "item.mffs.power_link_card": "Power Link Card",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF"
+  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Not Connected",
+  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
 }
