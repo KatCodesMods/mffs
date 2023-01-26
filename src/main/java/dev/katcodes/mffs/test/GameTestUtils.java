@@ -17,6 +17,10 @@ public class GameTestUtils {
                 throw new GameTestAssertPosException("Block Entity not found at position",pos, helper.absolutePos(pos),helper.getTick());
             }
             IItemHandler handler = entity.getCapability(ForgeCapabilities.ITEM_HANDLER,null).orElseThrow(()->new GameTestAssertException("Entity is not a container"));
+            for(int i=0;i<handler.getSlots();i++) {
+                helper.assertTrue(handler.getStackInSlot(i).isEmpty(),"Slot is not empty: "+i);
+            }
+            helper.succeed();
         });
     }
 }
