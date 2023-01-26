@@ -1,5 +1,7 @@
-name: Gradle Step 1
-
+name: Gradle Tests
+env:
+  GH_PKG_URL: "https://maven.pkg.github.com/${{ github.repository }}"
+  CC_RELEASE: false
 on:
   workflow_dispatch:
     inputs:
@@ -19,9 +21,14 @@ on:
       - ".github/**/*"
 permissions: write-all
 jobs:
-  changelog_version:
-    name: Set Changelog and version
+  vars:
+    name: Get Variables
     runs-on: ubuntu-22.04
+    outputs:
+      version: ${{steps.changelog.outputs.version}}
+      mcVersion: ${{steps.gradle_props.outputs.mc_version}}
+      forgeVersion: ${{steps.gradle_props.outputs.forge_version}}
+      new_sha: ${{steps.sha.outputs.SHA}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -36,15 +43,77 @@ jobs:
           skip-git-pull: "true"
           version-file: "version.json"
           version-path: "version"
-          skip-ci: false
-  test:
-    name: Check what the output here is
+
+      - name: Read MC and Forge versions
+        id: gradle_props
+        uses: christian-draeger/read-properties@1.1.0
+        with:
+          path: "gradle.properties"
+          properties: "mc_version forge_version"
+      - name: Get Sha
+        id: sha
+        run: |
+          sha_new = $(git rev-parse HEAD)
+          echo $sha_new
+          echo "::set-output name=SHA::$sha_new"
+      - run:
+          echo ${{ steps.sha.outputs.SHA }}
+
+  build-info:
+    name: Build Info
     runs-on: ubuntu-22.04
-    needs: [changelog_version]
+    needs: [ vars ]
+    steps:
+      - name: Output
+        run: |
+          echo "Version: ${{ needs.vars.outputs.version }}"
+          echo "Packages URL: ${{ env.GH_PKG_URL }}"
+  tests:
+    name: Gradle Tests
+    id: gradle_tests
+    runs-on: ubuntu-22.04
+    needs: [vars]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-      - name: Check git
-        run: git log
+          ref: ${{needs.var.outputs.new_sha}}
+      - name: Check SHA
+        if: inputs.diagnostic_mode
+        run: |
+          echo " SHA: ${{needs.var.outputs.new_sha}} "
+          sha_new = $(git rev-parse HEAD)
+          echo $sha_new
+             
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Prepare Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Diagnostic Output
+        if: inputs.diagnostic_mode
+        run: |
+          echo "Java Home: ${{env.JAVA_HOME}}"
+          ./gradlew -q dependencies
+
+      - name: Directory Structure Diagnostic
+        if: inputs.diagnostic_mode
+        run: tree > filetree.txt
+
+      - name: Make Directories
+        run: |
+          mkdir run
+          mkdir run/data
+          mkdir run/test
+          mkdir run/tests
+          mkdir forge-main/src/generated
+
+      - name: Generate Datagen Assets
+        run: ./gradlew runData
+        env:
+          MFFS_VERSION: ${{ needs.vars.outputs.version }}
