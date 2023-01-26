@@ -1,9 +1,12 @@
 package dev.katcodes.mffs.test;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.gametest.framework.GameTestAssertException;
 import net.minecraft.gametest.framework.GameTestAssertPosException;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
 
 public class GameTestUtils {
 
@@ -13,6 +16,7 @@ public class GameTestUtils {
             if(!(entity instanceof BlockEntity)) {
                 throw new GameTestAssertPosException("Block Entity not found at position",pos, helper.absolutePos(pos),helper.getTick());
             }
+            IItemHandler handler = entity.getCapability(ForgeCapabilities.ITEM_HANDLER,null).orElseThrow(()->new GameTestAssertException("Entity is not a container"));
         });
     }
 }

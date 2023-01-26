@@ -110,7 +110,6 @@ jobs:
           mkdir run/data
           mkdir run/test
           mkdir run/tests
-          mkdir src/generated
 
       - name: Generate Datagen Assets
         run: ./gradlew runData
