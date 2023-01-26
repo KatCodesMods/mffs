@@ -40,6 +40,7 @@ jobs:
   test:
     name: Check what the output here is
     runs-on: ubuntu-22.04
+    needs: [changelog_version]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
