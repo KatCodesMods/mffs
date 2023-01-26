@@ -110,7 +110,7 @@ jobs:
           mkdir run/data
           mkdir run/test
           mkdir run/tests
-          mkdir forge-main/src/generated
+          mkdir src/generated
 
       - name: Generate Datagen Assets
         run: ./gradlew runData
