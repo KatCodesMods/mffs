@@ -2,6 +2,8 @@
 /build/
 /bin/
 run/
+
+.DS_Store
 # Ignore Gradle GUI config
 gradle-app.setting
 
