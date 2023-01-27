@@ -93,6 +93,8 @@ jobs:
 
       - name: Prepare Gradle
         uses: gradle/gradle-build-action@v2
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/production' }}
 
       - name: Diagnostic Output
         if: inputs.diagnostic_mode
