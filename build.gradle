@@ -200,15 +200,24 @@ jar.finalizedBy('reobfJar')
 // However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
 // publish.dependsOn('reobfJar')
 
+var packageURL = System.getenv("GH_PKG_URL") ?: "https://maven.pkg.github.com/katcodesmods/mffs"
+
+
 publishing {
     publications {
+
         mavenJava(MavenPublication) {
             artifact jar
         }
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/mcmodsrepo"
+            url = packageURL
+            name = "GitHubPackages"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
