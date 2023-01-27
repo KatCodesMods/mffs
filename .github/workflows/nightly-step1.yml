@@ -182,70 +182,69 @@ jobs:
           MFFS_VERSION: ${{ needs.vars.outputs.version }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  get-package-info:
+    name: Get Latest Package Info
+    runs-on: ubuntu-22.04
+    needs: [ publish-gh-package ]
+    outputs:
+      version: ${{ steps.download-info.outputs.version }}
+    steps:
+      - name: Download Package Info
+        id: download-info
+        uses: compactmods/dl-package-info@1.0.2
+        env:
+          GQL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          owner: katcodesmods
+          repo: mffs
+          group: dev.katcodes.mffs
+          filter: "^mffs-(?:[\\d\\.]+)-nightly.jar$"
+          outputFile: mffs-nightly.json
 
-    get-package-info:
-      name: Get Latest Package Info
-      runs-on: ubuntu-22.04
-      needs: [ publish-gh-package ]
-      outputs:
-        version: ${{ steps.download-info.outputs.version }}
-      steps:
-        - name: Download Package Info
-          id: download-info
-          uses: compactmods/dl-package-info@1.0.2
-          env:
-            GQL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            owner: katcodesmods
-            repo: mffs
-            group: dev.katcodes.mffs
-            filter: "^mffs-(?:[\\d\\.]+)-nightly.jar$"
-            outputFile: mffs-nightly.json
+      - name: Debug output
+        run: |
+          echo "Version: ${{ steps.download-info.outputs.version }}"
+          cat mffs-nightly.json
+      - name: Read info into variable [latest]
+        id: info
+        run: echo "latestJson=$(cat mffs-nightly.json)" >> $GITHUB_OUTPUT
 
-        - name: Debug output
-          run: |
-            echo "Version: ${{ steps.download-info.outputs.version }}"
-            cat mffs-nightly.json
-        - name: Read info into variable [latest]
-          id: info
-          run: echo "latestJson=$(cat mffs-nightly.json)" >> $GITHUB_OUTPUT
+      - name: Download JAR and prepare artifacts
+        run: |
+          mkdir release
+          curl -L "${{ fromJson(steps.info.outputs.latestJson)[0].url }}" -o "release/${{ fromJson(steps.info.outputs.latestJson)[0].name}}"
+          mv mffs-nightly.json release/mffs-nightly.json
+      - name: Add Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: release
 
-        - name: Download JAR and prepare artifacts
-          run: |
-            mkdir release
-            curl -L "${{ fromJson(steps.info.outputs.latestJson)[0].url }}" -o "release/${{ fromJson(steps.info.outputs.latestJson)[0].name}}"
-            mv mffs-nightly.json release/mffs-nightly.json
-        - name: Add Artifact
-          uses: actions/upload-artifact@v3
-          with:
-            name: release
-            path: release
+  announce:
+    name: Discord Announcement
+    needs: [ vars, get-package-info ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Grab JAR and Info
+        uses: actions/download-artifact@v3
+        with:
+          name: release
+          path: .
 
-    announce:
-      name: Discord Announcement
-      needs: [ vars, get-package-info ]
-      runs-on: ubuntu-22.04
-      steps:
-        - name: Grab JAR and Info
-          uses: actions/download-artifact@v3
-          with:
-            name: release
-            path: .
+      - name: Read info into variable [latest]
+        id: info
+        run: echo "latestJson=$(cat mffs-nightly.json)" >> $GITHUB_OUTPUT
 
-        - name: Read info into variable [latest]
-          id: info
-          run: echo "latestJson=$(cat compactcrafting-nightly.json)" >> $GITHUB_OUTPUT
+      - name: Announce Release
+        uses: compactmods/discord-releaser@0.1.5
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        with:
+          filename: ${{ fromJson(steps.info.outputs.latestJson)[0].name}}
+          channel: ${{ secrets.NIGHTLY_CHANNEL_ID }}
+          modName: MFFS
+          modVersion: ${{ needs.get-package-info.outputs.version }}
+          thumbnail: https://media.forgecdn.net/avatars/thumbnails/324/502/64/64/637440523810696496.png
 
-        - name: Announce Release
-          uses: compactmods/discord-releaser@0.1.5
-          env:
-            DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          with:
-            filename: ${{ fromJson(steps.info.outputs.latestJson)[0].name}}
-            channel: ${{ secrets.NIGHTLY_CHANNEL_ID }}
-            modName: MFFS
-            modVersion: ${{ needs.get-package-info.outputs.version }}
-            thumbnail: https://media.forgecdn.net/avatars/thumbnails/324/502/64/64/637440523810696496.png
-
-            forgeVersion: ${{ needs.vars.outputs.forgeVersion }}
-            mcVersion: ${{ needs.vars.outputs.mcVersion }}
+          forgeVersion: ${{ needs.vars.outputs.forgeVersion }}
+          mcVersion: ${{ needs.vars.outputs.mcVersion }}
