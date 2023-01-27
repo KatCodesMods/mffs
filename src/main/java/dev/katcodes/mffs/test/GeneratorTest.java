@@ -12,6 +12,7 @@ import net.minecraftforge.gametest.GameTestHolder;
 
 @GameTestHolder(MFFSMod.MODID)
 public class GeneratorTest {
+
     @GameTest(
             setupTicks = 20L, // The test spends 20 ticks to set up for execution
             required = false, // The failure is logged but does not affect the execution of the batch
@@ -20,6 +21,7 @@ public class GeneratorTest {
     public static void testTakesCorrectCrystals(GameTestHelper helper) {
         GameTestUtils.assertContainerEmptyAtTickCapacity(helper,new BlockPos(0,1,0),50);
     }
+
     @GameTest(
             setupTicks = 20L, // The test spends 20 ticks to set up for execution
             required = false, // The failure is logged but does not affect the execution of the batch

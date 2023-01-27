@@ -115,3 +115,32 @@ jobs:
         run: ./gradlew :runData
         env:
           MFFS_VERSION: ${{ needs.vars.outputs.version }}
+
+      - name: Store Built Assets
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-data
+          path: src/generated/resources
+      - name: Upload Failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated-data-failure
+          path: .
+      - name: Test JAR with GameTest Server
+        run: ./gradlew runGameTestServer
+        env:
+          MFFS_VERSION: ${{ needs.vars.outputs.version }}
+          MFFS_TESTS: true
+      - name: Upload build failure
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-data
+          path: run/tests
+      - name: Save Test Results
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: 'run/tests/*.xml'
