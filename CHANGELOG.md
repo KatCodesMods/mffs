@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/KatCodesMods/MFFS/compare/v0.4.0...v0.5.0) (2023-01-27)
+
+
+### Features
+
+* Add working test report switch ([8ebd087](https://github.com/KatCodesMods/MFFS/commit/8ebd087f0725436d8f9bccab85c776ce6272d20c))
+
+
+
 # [0.4.0](https://github.com/KatCodesMods/MFFS/compare/v0.3.0...v0.4.0) (2023-01-26)
 
 
@@ -42,15 +51,6 @@
 ### Bug Fixes
 
 * Fix CI issue hopefully ([7d1552f](https://github.com/KatCodesMods/MFFS/commit/7d1552f8a3a6e48628c966e9b734569fea252670))
-
-
-
-# [0.2.0](https://github.com/KatCodesMods/MFFS/compare/v0.1.0...v0.2.0) (2023-01-21)
-
-
-### Features
-
-* **network:** Add the base class for network ([53e1661](https://github.com/KatCodesMods/MFFS/commit/53e166192df8ca92f7d4e7c361d58878efdbabc0))
 
 
 
