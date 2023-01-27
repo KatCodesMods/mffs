@@ -177,7 +177,7 @@ jobs:
           path: src/generated/resources
 
       - name: Publish gradle nightly jar
-        run: ./gradlew publishAllPublicationsToGitHubPackagesRepository --debug
+        run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
         env:
           MFFS_VERSION: ${{ needs.vars.outputs.version }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
@@ -198,7 +198,7 @@ jobs:
           owner: katcodesmods
           repo: mffs
           group: dev.katcodes.mffs
-          filter: "^mffs-(?:[\\d\\.]+)-nightly.jar$"
+          filter: "^mffs-(?:[\\d\\.]+).jar$"
           outputFile: mffs-nightly.json
 
       - name: Debug output
