@@ -177,7 +177,7 @@ jobs:
           path: src/generated/resources
 
       - name: Publish gradle nightly jar
-        run: ./gradlew publishAllPublicationsToGitHubPackagesRepository
+        run: ./gradlew publishAllPublicationsToGitHubPackagesRepository --debug
         env:
           MFFS_VERSION: ${{ needs.vars.outputs.version }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
