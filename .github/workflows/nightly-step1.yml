@@ -81,7 +81,7 @@ jobs:
         if: inputs.diagnostic_mode
         run: |
           echo " SHA: ${{needs.var.outputs.new_sha}} "
-          sha_new = $(git rev-parse HEAD)
+          sha_new=$(git rev-parse HEAD)
           echo $sha_new
              
 
