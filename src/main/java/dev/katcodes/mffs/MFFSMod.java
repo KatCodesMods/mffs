@@ -90,6 +90,7 @@ public class MFFSMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        LOGGER.info("Is test env? "+System.getenv().getOrDefault("MFFS_TESTS","false"));
         //if(System.getenv().getOrDefault("MFFS_TESTS","false").equalsIgnoreCase("true")) {
             try {
                 LOGGER.info("Setting JUNIT Test reporter");
