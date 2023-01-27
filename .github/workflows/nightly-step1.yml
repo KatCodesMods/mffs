@@ -18,6 +18,8 @@ on:
     paths-ignore:
       - "README.md"
       - "LICENSE"
+      - 'CHANGELOG.md'
+      - 'version.json'
       - ".github/**/*"
 permissions: write-all
 jobs:
