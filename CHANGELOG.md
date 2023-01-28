@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/KatCodesMods/mffs/compare/v0.6.0...v0.7.0) (2023-01-28)
+
+
+### Features
+
+* Add test for generating power ([8a570ac](https://github.com/KatCodesMods/mffs/commit/8a570ac568557c2a6af5eedad85b68269d70e433))
+
+
+
 # [0.6.0](https://github.com/KatCodesMods/mffs/compare/v0.5.0...v0.6.0) (2023-01-27)
 
 
@@ -42,15 +51,6 @@
 * **network:** Add base NetworkData class ([9498295](https://github.com/KatCodesMods/mffs/commit/9498295e48c549bab11d0864be3c69becdb37b6a))
 * **network:** Add packet for communication ([6bd2b12](https://github.com/KatCodesMods/mffs/commit/6bd2b12633f0a77252e767b2db8756652637aa51))
 * **network:** Save network data information to Overworld. ([1665b78](https://github.com/KatCodesMods/mffs/commit/1665b783db24da879ae43dfd3f41f54324c01637))
-
-
-
-## [0.2.2](https://github.com/KatCodesMods/mffs/compare/v0.2.1...v0.2.2) (2023-01-21)
-
-
-### Bug Fixes
-
-* **ci:** Added missing id ([4224292](https://github.com/KatCodesMods/mffs/commit/422429279fcd2b1828428cc8c45d859b6f4d1ed3))
 
 
 
