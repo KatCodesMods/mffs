@@ -22,6 +22,8 @@ on:
       - 'CHANGELOG.md'
       - 'version.json'
       - ".github/**/*"
+    branches-ignore:
+      - 'l10n_main'
 permissions: write-all
 jobs:
   vars:
