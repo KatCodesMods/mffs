@@ -9,7 +9,7 @@
   "mffs.network.cleared": "Cleared Network",
   "mffs.network.linked": "Network Linked",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
+  "tabs.modid.mffs_tab.tooltip": "エネルギー: %s/%s RF",
   "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tooltip.mffs.power_link_card.network_name": "ネットワーク名: %s"
 }
