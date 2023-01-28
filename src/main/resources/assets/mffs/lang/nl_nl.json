@@ -1,13 +1,13 @@
 {
-  "block.mffs.capacitor": "Capacitor",
+  "block.mffs.capacitor": "Condensator",
   "block.mffs.extractor": "Extractor",
   "block.mffs.generator": "Generator",
   "block.mffs.monazit_ore": "Monazit Ore",
   "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
-  "item.mffs.power_link_card": "Power Link Card",
+  "item.mffs.power_link_card": "Power Link Kaart",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
-  "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tabs.modid.mffs_tab.tooltip": "Energie: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Niet Verbonden",
+  "tooltip.mffs.power_link_card.network_name": "Netwerknaam: %s"
 }
