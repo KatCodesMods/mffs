@@ -405,4 +405,22 @@ public class GeneratorEntity extends BlockEntity implements MenuProvider {
     public BlockPos getPos() {
         return this.worldPosition;
     }
+
+    @Override
+    public String toString() {
+        return "GeneratorEntity{" +
+                "fuelHandler=" + fuelHandler +
+                ", fuelOptional=" + fuelOptional +
+                ", crystalHandler=" + crystalHandler +
+                ", crystalOptional=" + crystalOptional +
+                ", combinedOptional=" + combinedOptional +
+                ", energyStorage=" + energyStorage +
+                ", energyOptional=" + energyOptional +
+                ", burnTime=" + burnTime +
+                ", cookTime=" + cookTime +
+                ", cookTimeTotal=" + cookTimeTotal +
+                ", recipesUsed=" + recipesUsed +
+                ", containerData=" + containerData +
+                '}';
+    }
 }

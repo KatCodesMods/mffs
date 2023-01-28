@@ -41,3 +41,4 @@ You should have received a copy of the GNU Lesser Public License along with The 
 - [KatrinaAS](https://www.github.com/KatrinaAS) - Developer
 - [tifasnow](https://www.github.com/tifasnow) - Documentation
 - thunderdark - Original MFFS Mod Developer
+- GitHub Action workflow - [CompactMods/CompactCrafting](https://www.github.com/compactmods/compactcrafting)
