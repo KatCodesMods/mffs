@@ -1,15 +1,15 @@
 {
-  "block.mffs.capacitor": "Capacitor",
-  "block.mffs.extractor": "Extractor",
-  "block.mffs.generator": "Generator",
+  "block.mffs.capacitor": "Kondensaattori",
+  "block.mffs.extractor": "Poimin",
+  "block.mffs.generator": "Generaattori",
   "block.mffs.monazit_ore": "Monazit Ore",
-  "container.mffs.generator": "Generator",
+  "container.mffs.generator": "Generaattori",
   "item.mffs.monazit": "Monazit",
-  "item.mffs.power_link_card": "Power Link Card",
-  "mffs.network.cleared": "Cleared Network",
-  "mffs.network.linked": "Network Linked",
+  "item.mffs.power_link_card": "Virtalinkin Kortti",
+  "mffs.network.cleared": "Verkko Tyhjennetty",
+  "mffs.network.linked": "Verkko Linkitetty",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
-  "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tabs.modid.mffs_tab.tooltip": "Energia: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Ei Yhdistetty",
+  "tooltip.mffs.power_link_card.network_name": "Verkon nimi: %s"
 }
