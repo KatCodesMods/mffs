@@ -1,0 +1,15 @@
+{
+  "block.mffs.capacitor": "Capacitor",
+  "block.mffs.extractor": "Extractor",
+  "block.mffs.generator": "Generator",
+  "block.mffs.monazit_ore": "Monazit Ore",
+  "container.mffs.generator": "Generator",
+  "item.mffs.monazit": "Monazit",
+  "item.mffs.power_link_card": "Power Link Card",
+  "mffs.network.cleared": "Cleared Network",
+  "mffs.network.linked": "Network Linked",
+  "tabs.modid.mffs_tab": "MFFS",
+  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Heb Gysylltu",
+  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+}
