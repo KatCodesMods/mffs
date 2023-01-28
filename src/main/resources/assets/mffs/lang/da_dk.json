@@ -1,15 +1,15 @@
 {
   "block.mffs.capacitor": "Capacitor",
-  "block.mffs.extractor": "Extractor",
+  "block.mffs.extractor": "Udtrækker",
   "block.mffs.generator": "Generator",
   "block.mffs.monazit_ore": "Monazit Ore",
   "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
-  "item.mffs.power_link_card": "Power Link Card",
-  "mffs.network.cleared": "Cleared Network",
-  "mffs.network.linked": "Network Linked",
+  "item.mffs.power_link_card": "Power Link-kort",
+  "mffs.network.cleared": "Slet Netværk",
+  "mffs.network.linked": "Netværk Linket",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
-  "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tabs.modid.mffs_tab.tooltip": "Energi: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Ikke Forbundet",
+  "tooltip.mffs.power_link_card.network_name": "Netværksnavn: %s"
 }
