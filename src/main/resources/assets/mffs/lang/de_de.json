@@ -5,9 +5,9 @@
   "block.mffs.monazit_ore": "Monazit-Erz",
   "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
-  "item.mffs.power_link_card": "PowerLink-Karte",
+  "item.mffs.power_link_card": "Power-Link-Karte",
   "tabs.modid.mffs_tab": "MFFS",
   "tabs.modid.mffs_tab.tooltip": "Energie: %s/%s RF",
-  "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tooltip.mffs.power_link_card.empty": "Nicht Verbunden",
+  "tooltip.mffs.power_link_card.network_name": "Netzwerkname: %s"
 }
