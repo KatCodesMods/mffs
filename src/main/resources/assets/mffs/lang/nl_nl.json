@@ -6,6 +6,8 @@
   "container.mffs.generator": "Generator",
   "item.mffs.monazit": "Monazit",
   "item.mffs.power_link_card": "Power Link Kaart",
+  "mffs.network.cleared": "Cleared Network",
+  "mffs.network.linked": "Network Linked",
   "tabs.modid.mffs_tab": "MFFS",
   "tabs.modid.mffs_tab.tooltip": "Energie: %s/%s RF",
   "tooltip.mffs.power_link_card.empty": "Niet Verbonden",
