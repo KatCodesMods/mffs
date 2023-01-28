@@ -31,6 +31,9 @@ public class ModTranslations {
     public static final String POWER_LINK_TOOLTIP="tooltip.mffs.power_link_card.network_name";
     public static final String POWER_LINK_EMPTY="tooltip.mffs.power_link_card.empty";
 
+    public static final String NETWORK_SET="mffs.network.linked";
+    public static final String NETWORK_CLEARED="mffs.network.cleared";
+
     public static void initialize() {
 
         MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
@@ -38,5 +41,7 @@ public class ModTranslations {
         MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
         MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_TOOLTIP, "Network Name: %s");
         MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_EMPTY, "Not Connected");
+        MFFSMod.REGISTRATE.get().addRawLang(NETWORK_SET,"Network Linked");
+        MFFSMod.REGISTRATE.get().addRawLang(NETWORK_CLEARED,"Cleared Network");
     }
 }

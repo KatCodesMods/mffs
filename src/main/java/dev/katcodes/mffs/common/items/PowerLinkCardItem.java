@@ -21,18 +21,22 @@
 
 package dev.katcodes.mffs.common.items;
 
+import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
 import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -44,16 +48,32 @@ public class PowerLinkCardItem extends CardItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level p_41432_, Player p_41433_, InteractionHand p_41434_) {
-        if(p_41433_.isShiftKeyDown()) {
-            if(!p_41432_.isClientSide) {
-                if (!CardItem.getNetworkID(p_41433_.getItemInHand(p_41434_)).isPresent()) {
-                    NetworkData data=NetworkWorldData.get().createNetwork(p_41432_,0,1000);
-                    CardItem.setNetworkID(p_41433_.getItemInHand(p_41434_), data.getNetworkID());
+    public InteractionResult useOn(UseOnContext context) {
+        if(context.getPlayer().isShiftKeyDown()) {
+            if(!context.getLevel().isClientSide) {
+                BlockEntity entity = context.getLevel().getBlockEntity(context.getClickedPos());
+                if(entity instanceof CapacitorBlockEntity) {
+                    NetworkData data = NetworkWorldData.create().createNetwork(context.getLevel(),0,1000);
+                    CardItem.setNetworkID(context.getItemInHand(),data.getNetworkID());
+                    context.getPlayer().displayClientMessage(Component.translatable("mffs.network.linked"),true);
+                    return InteractionResult.CONSUME;
                 }
             }
         }
-        return super.use(p_41432_, p_41433_, p_41434_);
+        return InteractionResult.FAIL;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if(player.isShiftKeyDown()) {
+            if(!level.isClientSide) {
+                if (CardItem.getNetworkID(player.getItemInHand(hand)).isPresent()) {
+                    player.displayClientMessage(Component.translatable("mffs.network.cleared"),true);
+                    CardItem.clearNetworkID(player.getItemInHand(hand));
+                }
+            }
+        }
+        return super.use(level, player, hand);
     }
 
     @Override

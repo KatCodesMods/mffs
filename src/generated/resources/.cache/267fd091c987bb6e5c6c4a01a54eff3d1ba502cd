@@ -1,10 +1,10 @@
-// 1.19.3	2023-01-26T17:25:09.162097	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.19.3	2023-01-28T17:23:08.855465	Registrate Provider for mffs [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 7904368d2437c903b6e1cb3acd28510fc61dad5b assets/mffs/blockstates/capacitor.json
 864ef5646932c8f1a090431fa93a58a9b694f51f assets/mffs/blockstates/extractor.json
 3303e5b2a891fb7248db8714e7aba682fb41d121 assets/mffs/blockstates/generator.json
 42903ce2470d9181436ccd05f319feefc1b45e4c assets/mffs/blockstates/monazit_ore.json
-72b8ed52e08c2ad07efb63e56d63319fd51efb14 assets/mffs/lang/en_ud.json
-0fe6cd901927ec1e3fef21e92f123ddcf54f172a assets/mffs/lang/en_us.json
+c514b5884339838c014dde0575c348638a8dfc7e assets/mffs/lang/en_ud.json
+73c2c1b9b55a8c22897499fdf297c56d499c66e5 assets/mffs/lang/en_us.json
 3d3904626a10aebddfef431316d222c4e8ab92db assets/mffs/models/block/capacitor_off.json
 2da63eaab561ca7a323ba432613e3e676178703d assets/mffs/models/block/capacitor_on.json
 b7c8b0849c4c1d9f991bd6ceff7bb64c3342226a assets/mffs/models/block/extractor_off.json

@@ -40,6 +40,11 @@ public class CardItem extends ModItem{
         return Optional.empty();
     }
 
+    public static void clearNetworkID(ItemStack card) {
+        if(card.hasTag()) {
+            card.getTag().remove("networkID");
+        }
+    }
     public static void setNetworkID(ItemStack card, UUID networkID) {
         if(!card.hasTag()) {
             card.setTag(new CompoundTag());
