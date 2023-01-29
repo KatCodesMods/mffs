@@ -1,3 +1,17 @@
+# [0.10.0](https://github.com/KatCodesMods/mffs/compare/v0.9.0...v0.10.0) (2023-01-29)
+
+
+### Bug Fixes
+
+* Fixed broken output in CI ([65305ca](https://github.com/KatCodesMods/mffs/commit/65305caf8a59e55232964c18564fbfc0a4f88efb))
+
+
+### Features
+
+* Add documentation to comments ([af9b874](https://github.com/KatCodesMods/mffs/commit/af9b874aa7ed3eb8b3d5d6f058e28c720519bec4))
+
+
+
 # [0.9.0](https://github.com/KatCodesMods/mffs/compare/v0.8.0...v0.9.0) (2023-01-29)
 
 
@@ -31,15 +45,6 @@
 ### Features
 
 * Complete Nightly builds ([1224dfd](https://github.com/KatCodesMods/mffs/commit/1224dfd6919f082d3d3f13beb8bb897796b4d873))
-
-
-
-# [0.5.0](https://github.com/KatCodesMods/mffs/compare/v0.4.0...v0.5.0) (2023-01-27)
-
-
-### Features
-
-* Add working test report switch ([8ebd087](https://github.com/KatCodesMods/mffs/commit/8ebd087f0725436d8f9bccab85c776ce6272d20c))
 
 
 
