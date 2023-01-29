@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/KatCodesMods/mffs/compare/v0.10.0...v0.11.0) (2023-01-29)
+
+
+### Features
+
+* Some feature added ([20234e9](https://github.com/KatCodesMods/mffs/commit/20234e9e82526a13dfc043f57516c86737e70368))
+
+
+
 # [0.10.0](https://github.com/KatCodesMods/mffs/compare/v0.9.0...v0.10.0) (2023-01-29)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * Add test for generating power ([8a570ac](https://github.com/KatCodesMods/mffs/commit/8a570ac568557c2a6af5eedad85b68269d70e433))
-
-
-
-# [0.6.0](https://github.com/KatCodesMods/mffs/compare/v0.5.0...v0.6.0) (2023-01-27)
-
-
-### Features
-
-* Complete Nightly builds ([1224dfd](https://github.com/KatCodesMods/mffs/commit/1224dfd6919f082d3d3f13beb8bb897796b4d873))
 
 
 
