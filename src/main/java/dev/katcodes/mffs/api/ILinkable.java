@@ -23,6 +23,14 @@ package dev.katcodes.mffs.api;
 
 import net.minecraft.world.item.ItemStack;
 
+/**
+ * Interface to signify something can be linked with a Power card
+ */
 public interface ILinkable {
+    /**
+     * Function called when Power Link Card is used on the block entity
+     * @param card Card clicked onto the block
+     * @return true if worked, false otherwise
+     */
     boolean linkCard(ItemStack card);
 }
