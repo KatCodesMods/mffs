@@ -51,6 +51,7 @@ public class CardItem extends ModItem{
         }
         card.getTag().putString("networkID", networkID.toString());
     }
+    // Something
     public static boolean hasLink(ItemStack card) {
         if(!card.hasTag())
             return false;
