@@ -251,6 +251,6 @@ jobs:
 
           forgeVersion: ${{ needs.vars.outputs.forgeVersion }}
           mcVersion: ${{ needs.vars.outputs.mcVersion }}
-          forge_emote: 626138509853458435
-          mc_emote: 1069393008442740787
+          forge_emote: "626138509853458435"
+          mc_emote: "1069393008442740787"
           changelog: ${{needs.vars.outputs.changelog}}

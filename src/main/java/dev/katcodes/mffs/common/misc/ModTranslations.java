@@ -35,6 +35,8 @@ public class ModTranslations {
     public static final String NETWORK_CLEARED="mffs.network.cleared";
     public static final String NETWORK_LINK_FAIL = "mffs.network.link_failed";
 
+    public static final String NETWORK_ALREADY_CONNECTED = "mffs.network.already_connected";
+
     public static void initialize() {
 
         MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
@@ -45,5 +47,7 @@ public class ModTranslations {
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_SET,"Network Linked");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_CLEARED,"Cleared Network");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_LINK_FAIL,"Failed to link Network");
+        MFFSMod.REGISTRATE.get().addRawLang(NETWORK_ALREADY_CONNECTED, "Card is already linked. Clear before re-linking");
+
     }
 }
