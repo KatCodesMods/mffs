@@ -33,7 +33,7 @@ jobs:
       mcVersion: ${{steps.gradle_props.outputs.mc_version}}
       forgeVersion: ${{steps.gradle_props.outputs.forge_version}}
       new_sha: ${{steps.sha.outputs.SHA}}
-      changelog: ${{steps.changelog.clean_changelog}}
+      changelog: ${{steps.changelog.outputs.clean_changelog}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
