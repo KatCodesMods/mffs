@@ -37,8 +37,10 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.apache.logging.log4j.core.jmx.Server;
 
+import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class NetworkWorldData extends SavedData {
@@ -100,8 +102,12 @@ public class NetworkWorldData extends SavedData {
         return data;
     }
 
-    public NetworkData getNetwork(UUID uuid) {
-        return networkData.get(uuid);
+    public Optional<NetworkData> getNetwork(UUID uuid) {
+        if(networkData.containsKey(uuid)) {
+            return Optional.of(networkData.get(uuid));
+        }
+        return Optional.empty();
+        //return networkData.get(uuid);
     }
 
 

@@ -33,6 +33,7 @@ jobs:
       mcVersion: ${{steps.gradle_props.outputs.mc_version}}
       forgeVersion: ${{steps.gradle_props.outputs.forge_version}}
       new_sha: ${{steps.sha.outputs.SHA}}
+      changelog: ${{steps.changelog.clean_changelog}}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -238,7 +239,7 @@ jobs:
         run: echo "latestJson=$(cat mffs-nightly.json)" >> $GITHUB_OUTPUT
 
       - name: Announce Release
-        uses: compactmods/discord-releaser@0.1.5
+        uses: katrinaas/discord-releaser@0.1.5
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         with:
@@ -250,3 +251,6 @@ jobs:
 
           forgeVersion: ${{ needs.vars.outputs.forgeVersion }}
           mcVersion: ${{ needs.vars.outputs.mcVersion }}
+          forge_emote: 626138509853458435
+          mc_emote: 1069393008442740787
+          changelog: ${{needs.vars.outputs.changelog}}

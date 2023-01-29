@@ -33,6 +33,7 @@ public class ModTranslations {
 
     public static final String NETWORK_SET="mffs.network.linked";
     public static final String NETWORK_CLEARED="mffs.network.cleared";
+    public static final String NETWORK_LINK_FAIL = "mffs.network.link_failed";
 
     public static void initialize() {
 
@@ -43,5 +44,6 @@ public class ModTranslations {
         MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_EMPTY, "Not Connected");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_SET,"Network Linked");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_CLEARED,"Cleared Network");
+        MFFSMod.REGISTRATE.get().addRawLang(NETWORK_LINK_FAIL,"Failed to link Network");
     }
 }

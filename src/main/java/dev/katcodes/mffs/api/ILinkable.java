@@ -19,12 +19,10 @@
  * </p>
  */
 
-package dev.katcodes.mffs.common.libs;
+package dev.katcodes.mffs.api;
 
-public class LibItems {
+import net.minecraft.world.item.ItemStack;
 
-    public static final String MONAZIT="monazit";
-    public static final String POWER_LINK_CARD = "power_link_card";
-
-    public static final String DEBUG_STICK = "debug_stick";
+public interface ILinkable {
+    boolean linkCard(ItemStack card);
 }

@@ -29,6 +29,7 @@ import dev.katcodes.mffs.common.libs.LibItems;
 import dev.katcodes.mffs.common.tags.ModTags;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
@@ -47,6 +48,12 @@ public class ModItems {
                             0.7f))
             .register();
 
+    public static final ItemEntry<DebugStick> DEBUG_STICK = MFFSMod.REGISTRATE.get().object(LibItems.DEBUG_STICK)
+            .item(DebugStick::new)
+            .defaultLang()
+            .model((ctx, prov) ->
+                prov.withExistingParent(ctx.getName(),prov.mcLoc("item/handheld")).texture("layer0", prov.mcLoc("item/stick")))
+            .register();
 
     // Cards
     public static final ItemEntry<PowerLinkCardItem> POWER_LINK_CARD = MFFSMod.REGISTRATE.get().object(LibItems.POWER_LINK_CARD)

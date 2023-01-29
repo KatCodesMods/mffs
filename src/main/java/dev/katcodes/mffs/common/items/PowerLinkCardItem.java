@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.items;
 
+import dev.katcodes.mffs.api.ILinkable;
 import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
@@ -52,11 +53,13 @@ public class PowerLinkCardItem extends CardItem {
         if(context.getPlayer().isShiftKeyDown()) {
             if(!context.getLevel().isClientSide) {
                 BlockEntity entity = context.getLevel().getBlockEntity(context.getClickedPos());
-                if(entity instanceof CapacitorBlockEntity) {
-                    NetworkData data = NetworkWorldData.create().createNetwork(context.getLevel(),0,1000);
-                    CardItem.setNetworkID(context.getItemInHand(),data.getNetworkID());
-                    context.getPlayer().displayClientMessage(Component.translatable("mffs.network.linked"),true);
-                    return InteractionResult.CONSUME;
+                if(entity instanceof ILinkable) {
+                    boolean succeeded = ((ILinkable)entity).linkCard(context.getItemInHand());
+                    if(succeeded) {
+                        context.getPlayer().displayClientMessage(Component.translatable(ModTranslations.NETWORK_SET), true);
+                        return InteractionResult.CONSUME;
+                    }
+                    context.getPlayer().displayClientMessage(Component.translatable(ModTranslations.NETWORK_LINK_FAIL), true);
                 }
             }
         }
@@ -68,7 +71,7 @@ public class PowerLinkCardItem extends CardItem {
         if(player.isShiftKeyDown()) {
             if(!level.isClientSide) {
                 if (CardItem.getNetworkID(player.getItemInHand(hand)).isPresent()) {
-                    player.displayClientMessage(Component.translatable("mffs.network.cleared"),true);
+                    player.displayClientMessage(Component.translatable(ModTranslations.NETWORK_CLEARED),true);
                     CardItem.clearNetworkID(player.getItemInHand(hand));
                 }
             }

@@ -146,4 +146,14 @@ public class NetworkData  implements IForceEnergyCapability {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void putMachine(MachineType type, GlobalPos pos) {
+        if(networkMachines.containsKey(type)) {
+            networkMachines.get(type).add(pos);
+        } else {
+            List<GlobalPos> posList = new ArrayList<>();
+            posList.add(pos);
+            networkMachines.put(type,posList);
+        }
+    }
 }

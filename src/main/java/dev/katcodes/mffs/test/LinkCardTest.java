@@ -38,6 +38,7 @@ public class LinkCardTest {
     )
     public static void emptyCard(GameTestHelper helper) {
         Player player=helper.makeMockPlayer();
+
         player.getInventory().setItem(0, new ItemStack(ModItems.POWER_LINK_CARD.get()));
         helper.assertTrue(player.getInventory().getItem(0).getTag()==null,"Card should be empty");
         helper.succeed();
