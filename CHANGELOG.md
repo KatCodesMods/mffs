@@ -1,3 +1,12 @@
+# [0.13.0](https://github.com/KatCodesMods/mffs/compare/v0.12.0...v0.13.0) (2023-01-30)
+
+
+### Features
+
+* Start on making immutable to non for NetworkData ([7f33461](https://github.com/KatCodesMods/mffs/commit/7f33461ac061f18d03549483dd0bcbe40602ffcc))
+
+
+
 # [0.12.0](https://github.com/KatCodesMods/mffs/compare/v0.11.0...v0.12.0) (2023-01-29)
 
 
@@ -36,15 +45,6 @@
 ### Features
 
 * Add Debug stick, and work on Networks ([eb6ab5c](https://github.com/KatCodesMods/mffs/commit/eb6ab5c381e930f8a3ea1d4d54d1c152b4986add))
-
-
-
-# [0.8.0](https://github.com/KatCodesMods/mffs/compare/v0.7.0...v0.8.0) (2023-01-28)
-
-
-### Features
-
-* Make Link cards clear and set ([e8a808d](https://github.com/KatCodesMods/mffs/commit/e8a808daba67dacdd43fd09f3af651471b6e3084))
 
 
 
