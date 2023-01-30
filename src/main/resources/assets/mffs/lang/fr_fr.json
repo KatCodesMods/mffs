@@ -7,6 +7,7 @@
   "item.mffs.debug_stick": "Debug Stick",
   "item.mffs.monazit": "Monazite",
   "item.mffs.power_link_card": "Carte Power Link",
+  "mffs.network.already_connected": "Card is already linked. Clear before re-linking",
   "mffs.network.cleared": "Réseau effacé",
   "mffs.network.link_failed": "Failed to link Network",
   "mffs.network.linked": "Réseau lié",
