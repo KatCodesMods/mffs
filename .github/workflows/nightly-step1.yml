@@ -239,7 +239,7 @@ jobs:
         run: echo "latestJson=$(cat mffs-nightly.json)" >> $GITHUB_OUTPUT
 
       - name: Announce Release
-        uses: katrinaas/discord-releaser@0.1.5
+        uses: katrinaas/discord-releaser@0.1.6
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
         with:

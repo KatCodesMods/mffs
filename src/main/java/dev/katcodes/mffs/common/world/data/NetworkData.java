@@ -99,6 +99,10 @@ public class NetworkData  implements IForceEnergyCapability {
         return networkMachines.getOrDefault(type,new ArrayList<>());
     }
 
+    public static NetworkData of(NetworkData immutableData) {
+        return null;
+    }
+
     @Override
     public UUID getNetworkID() {
         return uuid;
