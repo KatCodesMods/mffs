@@ -76,7 +76,8 @@ public class MFFSMod
     public MFFSMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        if(false)
+            return;
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
