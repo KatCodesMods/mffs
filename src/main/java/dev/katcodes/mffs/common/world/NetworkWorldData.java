@@ -78,8 +78,8 @@ public class NetworkWorldData extends SavedData {
         NetworkWorldData data =create();
         ListTag listTag = compoundTag.getList("networkData", 10);
         listTag.forEach(tag -> {
-            NetworkData networkData = NetworkData.RECORD_CODEC.parse(NbtOps.INSTANCE, tag).getOrThrow(false, s -> {
-            });
+            NetworkData networkData = NetworkData.of(NetworkData.RECORD_CODEC.parse(NbtOps.INSTANCE, tag).getOrThrow(false, s -> {
+            }));
             data.networkData.put(networkData.getUuid(), networkData);
         });
         return data;

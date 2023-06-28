@@ -100,7 +100,8 @@ public class NetworkData  implements IForceEnergyCapability {
     }
 
     public static NetworkData of(NetworkData immutableData) {
-        return null;
+        NetworkData data = new NetworkData(immutableData.getUuid(),immutableData.getEnergy(),immutableData.getCapacity(),new HashMap<>(immutableData.getNetworkMachines()),immutableData.getName());
+        return data;
     }
 
     @Override

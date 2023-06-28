@@ -67,8 +67,8 @@ public class NetworkNamesPacket {
         // Create packet from buffer data
         Map<UUID, String> networkNames;
         networkNames = buffer.readMap(FriendlyByteBuf::readUUID, FriendlyByteBuf::readUtf);
-
-        return new NetworkNamesPacket(networkNames);
+        Map<UUID,String> newMAp=new HashMap<>(networkNames);
+        return new NetworkNamesPacket(newMAp);
     }
 
     public static void messageConsumer(NetworkNamesPacket packet, Supplier<NetworkEvent.Context> ctx) {

@@ -22,7 +22,9 @@
 package dev.katcodes.mffs.common.blocks;
 
 import dev.katcodes.mffs.MFFSMod;
+import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
 import dev.katcodes.mffs.common.blocks.entities.ModBlockEntities;
+import dev.katcodes.mffs.common.blocks.entities.NetworkedBlockEntities;
 import dev.katcodes.mffs.common.items.CardItem;
 import dev.katcodes.mffs.common.items.PowerLinkCardItem;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
@@ -34,6 +36,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
@@ -49,5 +53,11 @@ public class CapacitorBlock extends AbstractMachineBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return ModBlockEntities.CAPACITOR_ENTITY.create(blockPos, blockState);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_153212_, BlockState p_153213_, BlockEntityType<T> p_153214_) {
+        return createTickerHelper(p_153214_, ModBlockEntities.CAPACITOR_ENTITY.get(), NetworkedBlockEntities::tick);
     }
 }

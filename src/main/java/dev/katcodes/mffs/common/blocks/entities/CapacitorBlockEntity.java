@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
+import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.api.ILinkable;
 import dev.katcodes.mffs.api.MachineType;
 import dev.katcodes.mffs.common.items.CardItem;
@@ -34,6 +35,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
@@ -48,6 +50,8 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     private int capacity;
     private int energy;
     private String networkName;
+    private boolean initialized = false;
+    int tickCount = 0;
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
@@ -119,14 +123,7 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     public void onLoad() {
         super.onLoad();
         if(!level.isClientSide) {
-            Optional<NetworkData> data=getNetworkData();
-            if(data.isPresent()) {
-                NetworkData network=data.get();
-                this.capacity=network.getCapacity();
-                this.energy=network.getEnergy();
-                this.setChanged();
-                network.putMachine(MachineType.CAPACITOR,GlobalPos.of(level.dimension(),this.worldPosition));
-            }
+
         }
     }
 
@@ -150,8 +147,9 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     }
 
     @Override
-    public boolean linkCard(ItemStack card) {
-        if(!CardItem.hasLink(card)) {
+    public boolean linkCard(ItemStack card)
+    {
+        if (!CardItem.hasLink(card)) {
             if (networkUUID == null) {
                 NetworkData data = NetworkWorldData.get().createNetwork(level, 0, 1000);
                 this.onNetworkChange(data.getUuid());
@@ -163,6 +161,29 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
         }
     }
 
+    public void clientTick() {
 
+    }
 
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+
+       this.tickCount++;
+        if(!this.initialized && this.tickCount >= 20) {
+            MFFSMod.LOGGER.info("Initializing Capacitor");
+            Optional<NetworkData> data=this.getNetworkData();
+            if(data.isPresent()) {
+                NetworkData network=data.get();
+                this.capacity=network.getCapacity();
+                this.energy=network.getEnergy();
+                this.setChanged();
+                network.putMachine(this.getMachineType(),GlobalPos.of(level.dimension(),this.worldPosition));
+                this.initialized=true;
+            }
+        }
+    }
+
+    @Override
+    public MachineType getMachineType() {
+        return MachineType.CAPACITOR;
+    }
 }
