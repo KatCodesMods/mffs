@@ -37,7 +37,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -65,11 +64,11 @@ public class MFFSMod
 
     public static final NonNullSupplier<Registrate> REGISTRATE =
             NonNullSupplier.lazy(() -> Registrate
-                    .create(MODID)
-                    .creativeModeTab(ModTranslations.MFFS_TAB, c -> {
-                        c.icon(ModItems.MONAZIT.get()::getDefaultInstance);
-                        c.title(Component.translatable(ModTranslations.MFFS_TAB));
-                    }));
+                    .create(MODID));
+//                    .creativeModeTab(ModTranslations.MFFS_TAB, c -> {
+//                        c.icon(ModItems.MONAZIT.get()::getDefaultInstance);
+//                        c.title(Component.translatable(ModTranslations.MFFS_TAB));
+//                    }));
 
 
 
@@ -112,9 +111,6 @@ public class MFFSMod
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event)
-    {
-    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

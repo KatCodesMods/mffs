@@ -48,6 +48,7 @@ jobs:
           skip-git-pull: "true"
           version-file: "version.json"
           version-path: "version"
+          skip-on-empty: "false"
 
       - name: Read MC and Forge versions
         id: gradle_props
