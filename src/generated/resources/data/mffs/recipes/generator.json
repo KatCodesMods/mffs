@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "mffs:generator"
-  }
+  },
+  "show_notification": true
 }

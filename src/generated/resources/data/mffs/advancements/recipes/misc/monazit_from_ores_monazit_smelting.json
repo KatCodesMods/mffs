@@ -28,5 +28,6 @@
     "recipes": [
       "mffs:monazit_from_ores_monazit_smelting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

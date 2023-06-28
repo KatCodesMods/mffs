@@ -54,8 +54,8 @@ public class ModTags {
     public class ItemTags extends ItemTagsProvider {
         public static TagKey<Item> MONAZIT = net.minecraft.tags.ItemTags.create(new ResourceLocation(MFFSMod.MODID, "monazit"));
         public static TagKey<Item> MONAZIT_ORE = net.minecraft.tags.ItemTags.create(new ResourceLocation("forge","ores/monazit"));
-        public ItemTags(PackOutput p_255871_, CompletableFuture<HolderLookup.Provider> p_256035_, TagsProvider<Block> p_256467_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-            super(p_255871_, p_256035_, p_256467_, modId, existingFileHelper);
+        public ItemTags(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagsProvider.TagLookup<Block>> p_275322_, String modId, @org.jetbrains.annotations.Nullable net.minecraftforge.common.data.ExistingFileHelper existingFileHelper) {
+            super(p_275343_,p_275729_,p_275322_, modId, existingFileHelper);
         }
 
         @Override

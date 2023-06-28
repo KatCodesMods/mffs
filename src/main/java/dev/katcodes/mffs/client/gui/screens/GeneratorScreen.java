@@ -26,6 +26,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.client.gui.widgets.VerticalGuage;
 import dev.katcodes.mffs.common.inventory.GeneratorMenu;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -59,26 +60,23 @@ public class GeneratorScreen extends AbstractContainerScreen<GeneratorMenu> {
     }
 
     @Override
-    public void render(PoseStack p_97795_, int p_97796_, int p_97797_, float p_97798_) {
+    public void render(GuiGraphics p_97795_, int p_97796_, int p_97797_, float p_97798_) {
         this.renderBackground(p_97795_);
         super.render(p_97795_, p_97796_, p_97797_, p_97798_);
         this.renderTooltip(p_97795_, p_97796_, p_97797_);
     }
 
     @Override
-    protected void renderBg(PoseStack p_97787_, float p_97788_, int p_97789_, int p_97790_) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, this.texture);
+    protected void renderBg(GuiGraphics p_97787_, float p_97788_, int p_97789_, int p_97790_) {
         int i = this.leftPos;
         int j = this.topPos;
-        this.blit(p_97787_, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        p_97787_.blit(this.texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
 
         if (this.menu.is_burning()) {
             int k = this.menu.getBurnLeftScaled();
-            this.blit(p_97787_, i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+            p_97787_.blit(this.texture, i + 56, j + 36 + 12 - k, 176, 12 - k, 14, k + 1);
         }
         int l = this.menu.getCookProgressionScaled();
-        this.blit(p_97787_, i + 79, j + 34, 176, 14, l + 1, 16);
+        p_97787_.blit(this.texture, i + 79, j + 34, 176, 14, l + 1, 16);
     }
 }

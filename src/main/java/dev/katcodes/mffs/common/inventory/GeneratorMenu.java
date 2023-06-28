@@ -51,7 +51,7 @@ public class GeneratorMenu extends AbstractContainerMenu {
         super(ModMenus.GENERATOR.get(), windowId);
             this.playerEntity = playerInventory.player;
             this.playerInventory = playerInventory;
-            this.level = playerInventory.player.level;
+            this.level = playerInventory.player.level();
             this.data=data;
             addSlots(entity.getCrystalHandler(),entity.getFuelHandler(),playerInventory,data);
 

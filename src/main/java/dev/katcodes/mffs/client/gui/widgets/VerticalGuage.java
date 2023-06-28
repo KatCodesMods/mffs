@@ -26,6 +26,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import dev.katcodes.mffs.common.misc.ModTranslations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.narration.NarratedElementType;
@@ -98,23 +99,19 @@ public class VerticalGuage extends AbstractWidget {
         return ((current - min) * 100f) / (max - min);
     }
 
-    @Override
-    public void render(PoseStack matrixStack, int p_93658_, int p_93659_, float p_93660_) {
-        if (this.visible) {
-            float curPercent = getPercent();
-            int bar2height = (int) (1f + ((curPercent / 100f) * (this.height - 2f)));
-            int bar1height = this.height - bar2height;
-            Minecraft minecraft = Minecraft.getInstance();
-            Font font = minecraft.font;
-            RenderSystem.setShader(GameRenderer::getPositionTexShader);
-            RenderSystem.setShaderTexture(0, guageImage);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
-            RenderSystem.disableDepthTest();
-            blit(matrixStack, this.getX(), this.getY(), this.xTexStart, this.yTexStart, this.width, bar1height, 32, 64);
-            blit(matrixStack, this.getX(), this.getY() + bar1height, this.xGuageStart, this.yGuageStart + bar1height, this.width, bar2height, 32, 64);
-            RenderSystem.enableDepthTest();
 
-        }
+
+    @Override
+    protected void renderWidget(GuiGraphics p_282139_, int p_268034_, int p_268009_, float p_268085_) {
+        float curPercent = getPercent();
+        int bar2height = (int) (1f + ((curPercent / 100f) * (this.height - 2f)));
+        int bar1height = this.height - bar2height;
+        Minecraft minecraft = Minecraft.getInstance();
+        Font font = minecraft.font;
+        RenderSystem.disableDepthTest();
+        p_282139_.blit(this.guageImage, this.getX(), this.getY(), this.xTexStart, this.yTexStart, this.width, bar1height, 32, 64);
+        p_282139_.blit(this.guageImage, this.getX(), this.getY() + bar1height, this.xGuageStart, this.yGuageStart + bar1height, this.width, bar2height, 32, 64);
+        RenderSystem.enableDepthTest();
     }
 
 

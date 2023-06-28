@@ -54,7 +54,7 @@ public class MFFSPacketHandler {
 
     @SubscribeEvent
     public void handleClientLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if(!event.getEntity().level.isClientSide) {
+        if(!event.getEntity().level().isClientSide) {
             Map<UUID,String> stringMap= new HashMap<>();
             NetworkWorldData.get().networks().forEach((id, data) -> {
                 stringMap.put(id,data.getName());

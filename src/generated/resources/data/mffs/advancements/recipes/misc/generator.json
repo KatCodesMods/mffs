@@ -28,5 +28,6 @@
     "recipes": [
       "mffs:generator"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
