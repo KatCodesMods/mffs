@@ -427,6 +427,6 @@ public class GeneratorEntity extends BlockEntity implements MenuProvider, IDebug
     }
     @Override
     public String getDebugStickOutput() {
-        return "Deebug";
+        return "Debug";
     }
 }
