@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.items;
 
+import dev.katcodes.mffs.api.IDebugStickOutput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -48,6 +49,9 @@ public class DebugStick extends ModItem {
             player.sendSystemMessage(Component.literal(side+": "+ entity.toString()));
         else
             player.sendSystemMessage(Component.literal(side+": "+ "No block entity"));
+        if(entity instanceof IDebugStickOutput) {
+            player.sendSystemMessage(Component.literal(side+": "+ ((IDebugStickOutput) entity).getDebugStickOutput()));
+        }
 
         return InteractionResult.CONSUME;
     }

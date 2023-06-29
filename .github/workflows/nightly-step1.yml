@@ -217,6 +217,7 @@ jobs:
       - name: Download JAR and prepare artifacts
         run: |
           mkdir release
+          echo "URL: ${{ fromJson(steps.info.outputs.latestJson)[0].url }}"
           curl -L "${{ fromJson(steps.info.outputs.latestJson)[0].url }}" -o "release/${{ fromJson(steps.info.outputs.latestJson)[0].name}}"
           mv mffs-nightly.json release/mffs-nightly.json
       - name: Add Artifact

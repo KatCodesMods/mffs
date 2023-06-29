@@ -31,6 +31,7 @@ import net.minecraft.core.UUIDUtil;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ExtraCodecs;
 import org.antlr.v4.runtime.misc.MultiMap;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.*;
@@ -164,5 +165,10 @@ public class NetworkData  implements IForceEnergyCapability {
             posList.add(pos);
             networkMachines.put(type,posList);
         }
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

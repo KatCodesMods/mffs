@@ -22,6 +22,7 @@
 package dev.katcodes.mffs.common.blocks.entities;
 
 import dev.katcodes.mffs.MFFSMod;
+import dev.katcodes.mffs.api.IDebugStickOutput;
 import dev.katcodes.mffs.api.ILinkable;
 import dev.katcodes.mffs.api.MachineType;
 import dev.katcodes.mffs.common.items.CardItem;
@@ -44,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILinkable {
+public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILinkable, IDebugStickOutput {
 
     private UUID networkUUID;
     private int capacity;
@@ -168,7 +169,7 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     public void serverTick(Level level, BlockPos pos, BlockState state) {
 
        this.tickCount++;
-        if(!this.initialized && this.tickCount >= 20) {
+        if(!this.initialized && this.tickCount >= 20 && this.networkUUID!=null){
             MFFSMod.LOGGER.info("Initializing Capacitor");
             Optional<NetworkData> data=this.getNetworkData();
             if(data.isPresent()) {
@@ -185,5 +186,11 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     @Override
     public MachineType getMachineType() {
         return MachineType.CAPACITOR;
+    }
+
+    @Override
+    public String getDebugStickOutput() {
+        Optional<NetworkData> data=this.getNetworkData();
+        return data.map(networkData -> "Network Info?" + networkData.toString()).orElse("No Network");
     }
 }
