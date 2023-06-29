@@ -49,6 +49,7 @@ jobs:
           version-file: "version.json"
           version-path: "version"
           skip-on-empty: "false"
+          pre-release: "true"
 
       - name: Read MC and Forge versions
         id: gradle_props

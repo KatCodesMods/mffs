@@ -48,13 +48,13 @@ public class NetworkData  implements IForceEnergyCapability {
         this.uuid = uuid;
         this.energy = energy;
         this.capacity = capacity;
-        this.networkMachines=networkMachines;
+        this.networkMachines = networkMachines;
         this.name = name;
     }
 
     public NetworkData(UUID uuid, String name) {
-        this.uuid=uuid;
-        this.name=name;
+        this.uuid = uuid;
+        this.name = name;
     }
 
     public UUID getUuid() {
@@ -81,7 +81,7 @@ public class NetworkData  implements IForceEnergyCapability {
         this.capacity = capacity;
     }
 
-    public static final Codec<Map<MachineType,List<GlobalPos>>> NETWORK_MACHINES_CODEC = Codec.unboundedMap(MachineType.MACHINE_TYPE_CODEC, GlobalPos.CODEC.listOf());
+    public static final Codec<Map<MachineType, List<GlobalPos>>> NETWORK_MACHINES_CODEC = Codec.unboundedMap(MachineType.MACHINE_TYPE_CODEC, GlobalPos.CODEC.listOf());
     public static final Codec<NetworkData> RECORD_CODEC = RecordCodecBuilder.create(instance ->
             instance.group(
                     UUIDUtil.CODEC.fieldOf("uuid").forGetter(NetworkData::getUuid),
@@ -100,7 +100,11 @@ public class NetworkData  implements IForceEnergyCapability {
     }
 
     public static NetworkData of(NetworkData immutableData) {
-        NetworkData data = new NetworkData(immutableData.getUuid(),immutableData.getEnergy(),immutableData.getCapacity(),new HashMap<>(immutableData.getNetworkMachines()),immutableData.getName());
+        HashMap<MachineType, List<GlobalPos>> newMap = new HashMap<>();
+        for(Map.Entry<MachineType,List<GlobalPos>> entry : immutableData.getNetworkMachines().entrySet()) {
+            newMap.put(entry.getKey(),new ArrayList<>(entry.getValue()));
+        }
+        NetworkData data = new NetworkData(immutableData.getUuid(),immutableData.getEnergy(),immutableData.getCapacity(),newMap,immutableData.getName());
         return data;
     }
 
@@ -154,7 +158,7 @@ public class NetworkData  implements IForceEnergyCapability {
 
     public void putMachine(MachineType type, GlobalPos pos) {
         if(networkMachines.containsKey(type)) {
-//            networkMachines.get(type).add(pos);
+            networkMachines.get(type).add(pos);
         } else {
             List<GlobalPos> posList = new ArrayList<>();
             posList.add(pos);

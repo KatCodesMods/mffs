@@ -2,6 +2,7 @@
 /build/
 /bin/
 run/
+run-data/
 
 .DS_Store
 # Ignore Gradle GUI config
