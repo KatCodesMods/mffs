@@ -1,3 +1,12 @@
+## [0.14.1-rc.1](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.0...v0.14.1-rc.1) (2023-06-29)
+
+
+### Features
+
+* Add Debug Stick API ([1974bfc](https://github.com/KatCodesMods/mffs/commit/1974bfc6d609ae3bdc7acf828cbe3ea3b038b981))
+
+
+
 ## [0.14.1-rc.0](https://github.com/KatCodesMods/mffs/compare/v0.14.0...v0.14.1-rc.0) (2023-06-29)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * Added new language for already linked card ([91d71b6](https://github.com/KatCodesMods/mffs/commit/91d71b6a459bfff0140f6deb87b138687b26eb5b))
-
-
-
-# [0.11.0](https://github.com/KatCodesMods/mffs/compare/v0.10.0...v0.11.0) (2023-01-29)
-
-
-### Features
-
-* Some feature added ([20234e9](https://github.com/KatCodesMods/mffs/commit/20234e9e82526a13dfc043f57516c86737e70368))
 
 
 
