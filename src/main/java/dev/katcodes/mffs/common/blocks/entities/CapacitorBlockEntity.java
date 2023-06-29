@@ -25,6 +25,7 @@ import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.api.IDebugStickOutput;
 import dev.katcodes.mffs.api.ILinkable;
 import dev.katcodes.mffs.api.MachineType;
+import dev.katcodes.mffs.common.inventory.CapacitorMenu;
 import dev.katcodes.mffs.common.items.CardItem;
 import dev.katcodes.mffs.common.storage.MFFSEnergyStorage;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
@@ -32,9 +33,14 @@ import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -45,7 +51,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILinkable, IDebugStickOutput {
+public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILinkable, IDebugStickOutput, MenuProvider {
 
     private UUID networkUUID;
     private int capacity;
@@ -192,5 +198,16 @@ public class CapacitorBlockEntity extends NetworkedBlockEntities implements ILin
     public String getDebugStickOutput() {
         Optional<NetworkData> data=this.getNetworkData();
         return data.map(networkData -> "Network Info?" + networkData.toString()).orElse("No Network");
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.literal("Capacitor");
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int p_39954_, Inventory p_39955_, Player p_39956_) {
+        return new CapacitorMenu(p_39954_, p_39955_, this);
     }
 }

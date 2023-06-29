@@ -23,8 +23,10 @@ package dev.katcodes.mffs.common.blocks;
 
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
+import dev.katcodes.mffs.common.blocks.entities.GeneratorEntity;
 import dev.katcodes.mffs.common.blocks.entities.ModBlockEntities;
 import dev.katcodes.mffs.common.blocks.entities.NetworkedBlockEntities;
+import dev.katcodes.mffs.common.inventory.CapacitorMenu;
 import dev.katcodes.mffs.common.items.CardItem;
 import dev.katcodes.mffs.common.items.PowerLinkCardItem;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
@@ -32,6 +34,7 @@ import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -53,6 +56,17 @@ public class CapacitorBlock extends AbstractMachineBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return ModBlockEntities.CAPACITOR_ENTITY.create(blockPos, blockState);
+    }
+
+    @Override
+    public InteractionResult use(BlockState p_60503_, Level p_60504_, BlockPos p_60505_, Player p_60506_, InteractionHand p_60507_, BlockHitResult p_60508_) {
+        if(!p_60504_.isClientSide) {
+            BlockEntity blockEntity = p_60504_.getBlockEntity(p_60505_);
+            if(blockEntity instanceof CapacitorBlockEntity) {
+                p_60506_.openMenu((MenuProvider) blockEntity);
+            }
+        }
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable
