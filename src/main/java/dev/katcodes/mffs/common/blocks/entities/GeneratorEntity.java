@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
+import dev.katcodes.mffs.api.IDebugStickOutput;
 import dev.katcodes.mffs.api.MachineType;
 import dev.katcodes.mffs.common.blocks.AbstractMachineBlock;
 import dev.katcodes.mffs.common.configs.MFFSConfigs;
@@ -65,9 +66,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class GeneratorEntity extends BlockEntity implements MenuProvider {
+public class GeneratorEntity extends BlockEntity implements MenuProvider, IDebugStickOutput {
 
     private final IItemHandlerModifiable fuelHandler = createFuelHandler(this);
     private final LazyOptional<IItemHandler> fuelOptional = LazyOptional.of(() -> this.fuelHandler);
@@ -422,5 +424,9 @@ public class GeneratorEntity extends BlockEntity implements MenuProvider {
                 ", recipesUsed=" + recipesUsed +
                 ", containerData=" + containerData +
                 '}';
+    }
+    @Override
+    public String getDebugStickOutput() {
+        return "Deebug";
     }
 }

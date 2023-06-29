@@ -203,7 +203,7 @@ jobs:
           owner: katcodesmods
           repo: mffs
           group: dev.katcodes.mffs
-          filter: "^mffs-(?:[\\d\\.]+).jar$"
+          filter: "^mffs-(?:[\d\.]+)-rc\.(?:[\d]+)\.jar$"
           outputFile: mffs-nightly.json
 
       - name: Debug output
