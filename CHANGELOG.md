@@ -1,3 +1,13 @@
+## [0.14.1-rc.2](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.1...v0.14.1-rc.2) (2023-06-29)
+
+
+### Bug Fixes
+
+* Add a debug temp to Generator ([1f6ff45](https://github.com/KatCodesMods/mffs/commit/1f6ff456c005fbe52477ae3a1f74498e7862d075))
+* Fix spelling ([4ef580c](https://github.com/KatCodesMods/mffs/commit/4ef580c6aff7efb96d5faf2020bcd866e9a3fae3))
+
+
+
 ## [0.14.1-rc.1](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.0...v0.14.1-rc.1) (2023-06-29)
 
 
@@ -32,15 +42,6 @@
 ### Features
 
 * Start on making immutable to non for NetworkData ([7f33461](https://github.com/KatCodesMods/mffs/commit/7f33461ac061f18d03549483dd0bcbe40602ffcc))
-
-
-
-# [0.12.0](https://github.com/KatCodesMods/mffs/compare/v0.11.0...v0.12.0) (2023-01-29)
-
-
-### Features
-
-* Added new language for already linked card ([91d71b6](https://github.com/KatCodesMods/mffs/commit/91d71b6a459bfff0140f6deb87b138687b26eb5b))
 
 
 
