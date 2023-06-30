@@ -1,3 +1,12 @@
+## [0.14.1-rc.4](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.3...v0.14.1-rc.4) (2023-06-30)
+
+
+### Features
+
+* Add Mode button and infrastructure ([7ba4da3](https://github.com/KatCodesMods/mffs/commit/7ba4da303580ccf770262bd287b7c68bd8b32b34))
+
+
+
 ## [0.14.1-rc.3](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.2...v0.14.1-rc.3) (2023-06-29)
 
 
@@ -32,16 +41,6 @@
 ### Bug Fixes
 
 * Fix issue with ImmutableList ([75f32c2](https://github.com/KatCodesMods/mffs/commit/75f32c21a11e3b7d61dcf7099acecc4681650611))
-
-
-
-# [0.14.0](https://github.com/KatCodesMods/mffs/compare/v0.13.0...v0.14.0) (2023-06-28)
-
-
-### Features
-
-* Compile in 1.20.1 ([2338501](https://github.com/KatCodesMods/mffs/commit/2338501327b84db5ef24500b1a3185dd9b72ae72))
-* Start change to 1.20.1 ([52fa547](https://github.com/KatCodesMods/mffs/commit/52fa5475d17ce3ce71fd089683fd5a99b494b219))
 
 
 
