@@ -1,12 +1,19 @@
 package dev.katcodes.mffs.test;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.gametest.framework.GameTestAssertException;
 import net.minecraft.gametest.framework.GameTestAssertPosException;
 import net.minecraft.gametest.framework.GameTestHelper;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.items.IItemHandler;
+
+import java.util.UUID;
 
 public class GameTestUtils {
 
@@ -27,5 +34,21 @@ public class GameTestUtils {
             callback.accept(!notEmpty);
 
         });
+    }
+    public static ServerPlayer makeMockServerPlayerInLevel(GameTestHelper helper) {
+        ServerPlayer serverplayer = new FakePlayer(helper.getLevel(),  new GameProfile(UUID.randomUUID(), "test-mock-player")) {
+            /**
+             * Returns {@code true} if the player is in spectator mode.
+             */
+            public boolean isSpectator() {
+                return false;
+            }
+
+            public boolean isCreative() {
+                return true;
+            }
+        };
+        helper.getLevel().getServer().getPlayerList().placeNewPlayer(new Connection(PacketFlow.SERVERBOUND), serverplayer);
+        return serverplayer;
     }
 }
