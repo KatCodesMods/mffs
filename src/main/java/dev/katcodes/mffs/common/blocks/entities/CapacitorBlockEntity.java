@@ -41,11 +41,13 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -59,9 +61,30 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     private String networkName;
     private boolean initialized = false;
     int tickCount = 0;
+    public final ContainerData containerData=new ContainerData() {
+        @Override
+        public int get(int pIndex) {
+            if(pIndex==0)
+                return CapacitorBlockEntity.this.getCurrentMode();
+            else if(pIndex==1)
+                return 4;
+            return 0;
+        }
+
+        @Override
+        public void set(int pIndex, int pValue) {
+            if(pIndex==0)
+                CapacitorBlockEntity.this.setCurrentMode(pValue);
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+    };
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
+    protected void saveAdditional(@NotNull CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
         compoundTag.putInt("energy", energy);
         compoundTag.putInt("capcity",capacity);
@@ -70,7 +93,7 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
+    public void load(@NotNull CompoundTag compoundTag) {
         super.load(compoundTag);
         energy=compoundTag.getInt("energy");
         capacity = compoundTag.getInt("capacity");
@@ -150,6 +173,9 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
                 ", capacity=" + capacity +
                 ", energy=" + energy +
                 ", networkName='" + networkName + '\'' +
+                ", initialized=" + initialized +
+                ", tickCount=" + tickCount +
+                ", mode=" + getCurrentMode() +
                 '}';
     }
 
@@ -208,6 +234,16 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int p_39954_, Inventory p_39955_, Player p_39956_) {
-        return new CapacitorMenu(p_39954_, p_39955_, this);
+        return new CapacitorMenu(p_39954_, p_39955_, this, containerData);
+    }
+
+    @Override
+    public int getDefaultMode() {
+        return 1;
+    }
+
+    @Override
+    public boolean getDefaultActive() {
+        return true;
     }
 }

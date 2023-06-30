@@ -32,7 +32,7 @@ public class ModMenus {
             MFFSMod.REGISTRATE.get().menu("generator", (type,windowId,inv)->new GeneratorMenu(type,windowId,inv), ()->GeneratorScreen::new)
             .register();
     public static final MenuEntry<CapacitorMenu> CAPACITOR =
-            MFFSMod.REGISTRATE.get().menu("capacitor", (type,windowId,inv)->new CapacitorMenu(type,windowId,inv), ()-> CapacitorScreen::new)
+            MFFSMod.REGISTRATE.get().menu("capacitor", (type,windowId,inv, buf)->new CapacitorMenu(type,windowId,inv), ()-> CapacitorScreen::new)
             .register();
 
     public static void initialize() {

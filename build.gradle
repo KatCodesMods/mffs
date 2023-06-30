@@ -3,6 +3,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
 def modVersion = System.getenv("MFFS_VERSION") ?: "9.9.9"
@@ -61,10 +62,13 @@ minecraft {
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
     runs {
+        all {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+        }
         // applies to all the run configs below
         configureEach {
             workingDirectory project.file('run')
-
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.
@@ -146,6 +150,13 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven { url 'https://maven.blamejared.com' }
+    maven {
+        url "https://squiddev.cc/maven/"
+        content {
+            includeGroup("cc.tweaked")
+            includeModule("org.squiddev", "Cobalt")
+        }
+    }
     mavenLocal()
 }
 
@@ -166,7 +177,13 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    // Vanilla (i.e. for multi-loader systems)
+    compileOnly("cc.tweaked:cc-tweaked-${minecraft_version}-common-api:${cct_version}")
 
+    // Forge Gradle
+    compileOnly("cc.tweaked:cc-tweaked-${minecraft_version}-core-api:${cct_version}")
+    compileOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge-api:${cct_version}"))
+    runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}"))
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 

@@ -37,20 +37,18 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import org.jetbrains.annotations.Nullable;
 
-public class CapacitorMenu extends AbstractContainerMenu {
-    private Player playerEntity;
-    protected Level level;
-    private Inventory playerInventory;
-    private ContainerData data;
+public class CapacitorMenu extends AbstractSwitchableMachineMenu {
+
     private CapacitorBlockEntity entity;
 
     public CapacitorMenu(@Nullable MenuType<?> p_38851_, int id, final Inventory playerInventory) {
         super(p_38851_,id);
+        this.data=new SimpleContainerData(2);
         addSlots(playerInventory);
     }
 
-    public CapacitorMenu(int windowId, final Inventory playerInventory, final CapacitorBlockEntity entity) {
-        super(ModMenus.CAPACITOR.get(), windowId);
+    public CapacitorMenu(int windowId, final Inventory playerInventory, final CapacitorBlockEntity entity, ContainerData data) {
+        super(ModMenus.CAPACITOR.get(), windowId, playerInventory, data);
         this.playerEntity = playerInventory.player;
         this.playerInventory = playerInventory;
         this.level = playerInventory.player.level();
@@ -63,10 +61,18 @@ public class CapacitorMenu extends AbstractContainerMenu {
 
         layoutPlayerInventorySlots(8, 125,new InvWrapper(inventory));
 
-
+        this.addDataSlots(data);
     }
 
 
+    @Override
+    public boolean clickMenuButton(Player pPlayer, int pId) {
+        if(pId==0) {
+            entity.toggleMode();
+            return true;
+        }
+        return super.clickMenuButton(pPlayer, pId);
+    }
 
     private int addSlotRange(IItemHandler handler, int index, int x, int y, int amount, int dx) {
         for (int i = 0 ; i < amount ; i++) {

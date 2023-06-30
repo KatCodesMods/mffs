@@ -24,6 +24,7 @@ package dev.katcodes.mffs.common.blocks.entities;
 import dev.katcodes.mffs.api.IDebugStickOutput;
 import dev.katcodes.mffs.api.MachineType;
 import dev.katcodes.mffs.common.blocks.AbstractMachineBlock;
+import dev.katcodes.mffs.common.blocks.GeneratorBlock;
 import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.inventory.GeneratorMenu;
 import dev.katcodes.mffs.common.misc.ModTranslations;
@@ -263,7 +264,7 @@ public class GeneratorEntity extends BlockEntity implements MenuProvider, IDebug
 
                     if (flag != blockEntity.isBurning()) {
                         flag1 = true;
-                        level.setBlock(pos, state.setValue(AbstractMachineBlock.LIT, blockEntity.isBurning()), 3);
+                        level.setBlock(pos, state.setValue(GeneratorBlock.LIT, blockEntity.isBurning()), 3);
                         blockEntity.setChanged();
                     }
                 }));

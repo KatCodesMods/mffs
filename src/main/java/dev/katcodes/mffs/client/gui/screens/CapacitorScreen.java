@@ -22,19 +22,21 @@
 package dev.katcodes.mffs.client.gui.screens;
 
 import dev.katcodes.mffs.MFFSMod;
+import dev.katcodes.mffs.client.gui.widgets.ModeButton;
 import dev.katcodes.mffs.client.gui.widgets.VerticalGuage;
 import dev.katcodes.mffs.common.inventory.CapacitorMenu;
 import dev.katcodes.mffs.common.inventory.GeneratorMenu;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.core.GlobalPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class CapacitorScreen extends AbstractContainerScreen<CapacitorMenu> {
     private final ResourceLocation texture = new ResourceLocation(MFFSMod.MODID, "textures/gui/capacitor.png");
-    private final ResourceLocation FORGE_GUAGE = new ResourceLocation(MFFSMod.MODID, "textures/gui/widgets/forge_guage.png");
-    private VerticalGuage guage;
+    private final ResourceLocation modeButtonTexture = new ResourceLocation(MFFSMod.MODID, "textures/gui/widgets/mode_button.png");
+    private ModeButton modeButton;
 
     public CapacitorScreen(CapacitorMenu p_97741_, Inventory p_97742_, Component p_97743_) {
         super(p_97741_, p_97742_, p_97743_);
@@ -47,8 +49,17 @@ public class CapacitorScreen extends AbstractContainerScreen<CapacitorMenu> {
         boolean widthTooNarrow = this.width < 379;
         this.imageHeight=208;
         this.imageWidth=176;
+        modeButton=new ModeButton(this,modeButtonTexture,this.getGuiLeft()+154,this.getGuiTop()+5,Component.empty(),0);
+        modeButton.setMode(this.menu.getMode());
 
+        this.addRenderableWidget(modeButton);
+    }
 
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+        modeButton.setMode(this.menu.getMode());
+        MFFSMod.LOGGER.info("TRying to load with mode: "+this.menu.getMode());
     }
 
     @Override

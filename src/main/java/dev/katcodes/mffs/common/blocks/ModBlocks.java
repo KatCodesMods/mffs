@@ -31,21 +31,25 @@ import dev.katcodes.mffs.common.libs.LibBlocks;
 import dev.katcodes.mffs.common.tags.ModTags;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.crafting.ConditionalRecipe;
 
 public class ModBlocks {
 
 
     //region Register special blocks
+    public static void registerSimpleFurnaceMachine(Block block, String blockname, RegistrateBlockstateProvider provider) {
+        ModelFile off = provider.models().orientable(blockname+"_off", provider.modLoc("block/"+blockname+"/side_off"), provider.modLoc("block/"+blockname+"/front_off"),provider.modLoc("block/"+blockname+"/side_off"));
+        ModelFile on = provider.models().orientable(blockname+"_on", provider.modLoc("block/"+blockname+"/side_on"), provider.modLoc("block/"+blockname+"/front_on"),provider.modLoc("block/"+blockname+"/side_on"));
+        provider.horizontalBlock(block, state -> state.getValue(GeneratorBlock.LIT) ? on : off);
+    }
+
     public static void registerSimpleActivatableMachine(Block block, String blockname, RegistrateBlockstateProvider provider) {
         ModelFile off = provider.models().orientable(blockname+"_off", provider.modLoc("block/"+blockname+"/side_off"), provider.modLoc("block/"+blockname+"/front_off"),provider.modLoc("block/"+blockname+"/side_off"));
         ModelFile on = provider.models().orientable(blockname+"_on", provider.modLoc("block/"+blockname+"/side_on"), provider.modLoc("block/"+blockname+"/front_on"),provider.modLoc("block/"+blockname+"/side_on"));
-        provider.horizontalBlock(block, state -> state.getValue(AbstractMachineBlock.LIT) ? on : off);
+        provider.horizontalBlock(block, state -> state.getValue(AbstractActivatableBlock.ACTIVATED) ? on : off);
     }
 
     //endregion
@@ -82,7 +86,7 @@ public class ModBlocks {
             .block(GeneratorBlock::new)
             .blockstate(
                     (ctx, provider) ->
-                            registerSimpleActivatableMachine(ctx.get(), LibBlocks.GENERATOR, provider))
+                            registerSimpleFurnaceMachine(ctx.get(), LibBlocks.GENERATOR, provider))
             .defaultLang()
             .recipe((ctx, prov) -> {
                 ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ctx.getEntry())

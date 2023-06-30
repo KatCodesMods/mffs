@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.blocks;
 
+import com.tterrag.registrate.builders.MenuBuilder;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
 import dev.katcodes.mffs.common.blocks.entities.GeneratorEntity;
@@ -32,6 +33,7 @@ import dev.katcodes.mffs.common.items.PowerLinkCardItem;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
 import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -43,10 +45,13 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.network.IContainerFactory;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 
-public class CapacitorBlock extends AbstractMachineBlock {
+public class CapacitorBlock extends AbstractActivatableBlock {
 
     protected CapacitorBlock(Properties p_49224_) {
         super(p_49224_);
@@ -63,7 +68,8 @@ public class CapacitorBlock extends AbstractMachineBlock {
         if(!p_60504_.isClientSide) {
             BlockEntity blockEntity = p_60504_.getBlockEntity(p_60505_);
             if(blockEntity instanceof CapacitorBlockEntity) {
-                p_60506_.openMenu((MenuProvider) blockEntity);
+                //p_60506_.openMenu((MenuProvider) blockEntity);
+                NetworkHooks.openScreen((ServerPlayer) p_60506_, (MenuProvider) blockEntity, p_60505_);
             }
         }
         return InteractionResult.SUCCESS;

@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class ExtractorBlock extends AbstractMachineBlock {
+public class ExtractorBlock extends AbstractActivatableBlock {
 
     protected ExtractorBlock(Properties p_49224_) {
         super(p_49224_);

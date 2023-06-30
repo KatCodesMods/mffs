@@ -41,9 +41,6 @@ import java.util.UUID;
 import java.util.function.Supplier;
 
 public class NetworkNamesPacket {
-    public static final Codec<NetworkNamesPacket> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            Codec.unboundedMap(UUIDUtil.CODEC, Codec.STRING).fieldOf("networkNames").forGetter(NetworkNamesPacket::getNetworkNames)
-    ).apply(instance, NetworkNamesPacket::new));
 
 
     private static Map<UUID,String> networkNames = new HashMap<>();
