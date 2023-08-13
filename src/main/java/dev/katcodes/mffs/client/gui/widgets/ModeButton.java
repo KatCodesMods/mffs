@@ -34,31 +34,34 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-public class ModeButton extends AbstractButton {
-    private ResourceLocation texture;
-    private int mode;
-    private AbstractContainerScreen screen;
-    private int buttonId;
+import java.util.Objects;
 
-    public ModeButton(AbstractContainerScreen screen,ResourceLocation texture, int x, int y, Component p_93369_, int buttonId) {
+public class ModeButton extends PictureButton {
+    private int mode;
+    private int texWidth;
+    private int texHeight;
+
+    public ModeButton(AbstractContainerScreen screen,ResourceLocation texture, int x, int y, Component p_93369_, int buttonId, int texWidth, int texHeight) {
         super(x, y, 16,16, p_93369_);
-        this.texture=texture;
-        this.screen=screen;
-        this.buttonId=buttonId;
+        this.setTexture(texture);
+        this.setScreen(screen);
+        this.setButtonId(buttonId);
+        this.texWidth=texWidth;
+        this.texHeight=texHeight;
     }
 
 
     @Override
     protected void renderWidget(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
 
-        pGuiGraphics.blit(this.texture,this.getX(),this.getY(),mode*16,0,16,16,96,96);
+        pGuiGraphics.blit(this.getTexture(),this.getX(),this.getY(),mode*this.getWidth(),0,this.getWidth(),this.getHeight(),this.texWidth,this.texHeight);
         //pGuiGraphics.blit(texture, this.getX(), this.getY(), 16,16,16f,16f,0,0,16,16);
 
     }
 
     @Override
     public void onPress() {
-        this.screen.getMinecraft().gameMode.handleInventoryButtonClick(this.screen.getMenu().containerId,this.buttonId);
+        Objects.requireNonNull(this.getScreen().getMinecraft().gameMode).handleInventoryButtonClick(this.getScreen().getMenu().containerId,this.getButtonId());
     }
 
     @Override

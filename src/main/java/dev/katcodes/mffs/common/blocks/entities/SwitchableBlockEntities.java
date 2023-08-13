@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
+import dev.katcodes.mffs.api.MachineType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class SwitchableBlockEntities extends NetworkedBlockEntities {
 
     private int currentMode = getDefaultMode();
+
 
     public int getDefaultMode() {
         return 0;
@@ -77,4 +79,5 @@ public abstract class SwitchableBlockEntities extends NetworkedBlockEntities {
             nextMode = 0;
         setCurrentMode(nextMode);
     }
+
 }

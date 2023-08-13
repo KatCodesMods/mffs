@@ -23,8 +23,10 @@ package dev.katcodes.mffs;
 
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import dev.katcodes.mffs.common.blocks.ModBlocks;
+import dev.katcodes.mffs.common.compat.Compats;
 import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.inventory.ModMenus;
 import dev.katcodes.mffs.common.items.ModItems;
@@ -34,12 +36,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.gametest.framework.GlobalTestReporter;
 import net.minecraft.gametest.framework.JUnitLikeTestReporter;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -64,13 +69,16 @@ public class MFFSMod
 
     public static final NonNullSupplier<Registrate> REGISTRATE =
             NonNullSupplier.lazy(() -> Registrate
-                    .create(MODID));
+                    .create(MODID)
+            );
 //                    .creativeModeTab(ModTranslations.MFFS_TAB, c -> {
 //                        c.icon(ModItems.MONAZIT.get()::getDefaultInstance);
 //                        c.title(Component.translatable(ModTranslations.MFFS_TAB));
 //                    }));
 
-
+    public final static  RegistryEntry<CreativeModeTab> CREATIVE_TAB = REGISTRATE.get().object(ModTranslations.MFFS_TAB)
+            .defaultCreativeTab(tab -> tab.withLabelColor(0xFF00AA00).withSearchBar())
+            .register();
 
     public MFFSMod()
     {
@@ -109,6 +117,7 @@ public class MFFSMod
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        Compats.initialize();
     }
 
 

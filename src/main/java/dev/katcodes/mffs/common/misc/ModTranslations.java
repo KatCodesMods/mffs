@@ -24,7 +24,7 @@ package dev.katcodes.mffs.common.misc;
 import dev.katcodes.mffs.MFFSMod;
 
 public class ModTranslations {
-    public static final String MFFS_TAB="tabs.modid.mffs_tab";
+    public static final String MFFS_TAB="mffs";
     public static final String GUAGE_TOOLTIP="tabs.modid.mffs_tab.tooltip";
     public static final String GENERATOR_CONTAINER="container.mffs.generator";
 
@@ -37,9 +37,11 @@ public class ModTranslations {
 
     public static final String NETWORK_ALREADY_CONNECTED = "mffs.network.already_connected";
 
+    public static final String UPGRADE_HOLD_SHIFT="mffs.upgrade.hold_shift";
+
     public static void initialize() {
 
-        MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
+        //MFFSMod.REGISTRATE.get().addRawLang(MFFS_TAB, "MFFS");
         MFFSMod.REGISTRATE.get().addRawLang(GUAGE_TOOLTIP, "Energy: %s/%s RF");
         MFFSMod.REGISTRATE.get().addRawLang(GENERATOR_CONTAINER, "Generator");
         MFFSMod.REGISTRATE.get().addRawLang(POWER_LINK_TOOLTIP, "Network Name: %s");
@@ -48,6 +50,9 @@ public class ModTranslations {
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_CLEARED,"Cleared Network");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_LINK_FAIL,"Failed to link Network");
         MFFSMod.REGISTRATE.get().addRawLang(NETWORK_ALREADY_CONNECTED, "Card is already linked. Clear before re-linking");
+        MFFSMod.REGISTRATE.get().addRawLang("mffs.upgrade.range.description", "§7Range increase §ex%s§7 (Stack total §ex%s§7)");
+        MFFSMod.REGISTRATE.get().addRawLang("mffs.upgrade.capacity.description", "§7Capacity increase §e+%s§7 FE (Stack total §e+%s§7 FE)");
+        MFFSMod.REGISTRATE.get().addRawLang(UPGRADE_HOLD_SHIFT, "Hold shift to see how much upgraded by item stack");
 
     }
 }

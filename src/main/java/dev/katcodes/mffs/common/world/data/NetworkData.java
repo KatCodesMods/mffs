@@ -126,7 +126,12 @@ public class NetworkData  implements IForceEnergyCapability {
 
     @Override
     public int getFEStored() {
-        return 0;
+        return energy;
+    }
+
+    @Override
+    public void setFEStored(int amount) {
+        this.energy=amount;
     }
 
     @Override

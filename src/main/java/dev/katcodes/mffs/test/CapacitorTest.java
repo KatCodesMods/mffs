@@ -23,6 +23,7 @@ package dev.katcodes.mffs.test;
 
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.items.ModItems;
+import dev.katcodes.mffs.common.items.PowerLinkCardItem;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,6 +37,10 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.gametest.GameTestHolder;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @GameTestHolder(MFFSMod.MODID)
 public class CapacitorTest {
@@ -45,20 +50,32 @@ public class CapacitorTest {
             required = false, // The failure is logged but does not affect the execution of the batch
             batch = "capacitor_tests" // The test is part of the batch "link_card_test"
     )
-    public static void newNetwork(GameTestHelper helper) {
+    public static void newNetwork(@NotNull GameTestHelper helper) {
         Player player = helper.makeMockSurvivalPlayer();
         player.getInventory().add(new ItemStack(ModItems.POWER_LINK_CARD.get()));
         player.setPose(Pose.CROUCHING);
         player.setShiftKeyDown(true);
-        MFFSMod.LOGGER.info("There are networks: "+NetworkWorldData.get().networks().size());
-        MFFSMod.LOGGER.info("Block is "+helper.getBlockState(new BlockPos(0,1,0)).getBlock());
+        int before=NetworkWorldData.get().networks().size();
         ItemStack stack=player.getItemInHand(InteractionHand.MAIN_HAND);
         stack.getItem().useOn(
                 new UseOnContext(player.level(),player,InteractionHand.MAIN_HAND,stack, new BlockHitResult(new Vec3(0,1,0), Direction.UP,helper.absolutePos(new BlockPos(0,1,0)),false))
                         );
-        MFFSMod.LOGGER.info("There are networks: "+NetworkWorldData.get().networks().size());
-        helper.succeed();
+        int after =NetworkWorldData.get().networks().size();
 
+        Optional<UUID> networkID = PowerLinkCardItem.getNetworkID(stack);
+        if(networkID.isEmpty())
+            helper.fail("Network ID not set on card");
+        else {
+            if(!NetworkWorldData.get().networks().containsKey(networkID.get()))
+                helper.fail("Network not created");
+            else if (after == before + 1) {
+                helper.succeed();
+            }
+            else
+                helper.fail("Network not created");
+        }
+        networkID.ifPresent(uuid -> NetworkWorldData.get().networks().remove(uuid));
+        helper.destroyBlock(new BlockPos(0,1,0));
     }
 
 }

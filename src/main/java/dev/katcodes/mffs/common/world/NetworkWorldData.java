@@ -21,6 +21,7 @@
 
 package dev.katcodes.mffs.common.world;
 
+import dev.katcodes.mffs.api.IForceEnergyCapability;
 import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
 import dev.katcodes.mffs.common.networking.packets.NetworkNamesPacket;
 import dev.katcodes.mffs.common.world.data.NetworkData;
@@ -33,6 +34,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.apache.logging.log4j.core.jmx.Server;
@@ -102,11 +104,11 @@ public class NetworkWorldData extends SavedData {
         return data;
     }
 
-    public Optional<NetworkData> getNetwork(UUID uuid) {
+    public LazyOptional<IForceEnergyCapability> getNetwork(UUID uuid) {
         if(networkData.containsKey(uuid)) {
-            return Optional.of(networkData.get(uuid));
+            return LazyOptional.of(() -> networkData.get(uuid));
         }
-        return Optional.empty();
+        return LazyOptional.empty();
         //return networkData.get(uuid);
     }
 

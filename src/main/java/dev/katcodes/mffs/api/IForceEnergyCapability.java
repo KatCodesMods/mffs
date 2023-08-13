@@ -68,6 +68,8 @@ public interface IForceEnergyCapability {
      */
     int getFEStored();
 
+    void setFEStored(int amount);
+
 
     /**
      * Get the maximum amount of FE that can be stored in the network.
@@ -98,4 +100,6 @@ public interface IForceEnergyCapability {
      * @return True if FE can be received by the network.
      */
     boolean canReceive();
+
+
 }

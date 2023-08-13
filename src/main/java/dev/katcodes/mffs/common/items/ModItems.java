@@ -24,6 +24,7 @@ package dev.katcodes.mffs.common.items;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import dev.katcodes.mffs.MFFSMod;
+import dev.katcodes.mffs.api.UpgradeTypes;
 import dev.katcodes.mffs.common.blocks.ModBlocks;
 import dev.katcodes.mffs.common.libs.LibItems;
 import dev.katcodes.mffs.common.tags.ModTags;
@@ -32,6 +33,9 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModItems {
 
@@ -64,14 +68,22 @@ public class ModItems {
             .register();
 
     // Item Blocks
-
+    public static Map<UpgradeTypes,ItemEntry<UpgradeItem>> UPGRADE_CARDS=new HashMap<>();
     public static ItemEntry<BlockItem> MONAZIT_ORE_ITEM = (ItemEntry<BlockItem>) ModBlocks.MONAZIT_ORE.<Item, BlockItem>getSibling(Registries.ITEM);
     public static ItemEntry<BlockItem> GENERATOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.GENERATOR.<Item, BlockItem>getSibling(Registries.ITEM);
 
     public static ItemEntry<BlockItem> CAPACITOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.CAPACITOR.<Item, BlockItem>getSibling(Registries.ITEM);
     public static ItemEntry<BlockItem> EXTRACTOR_ITEM = (ItemEntry<BlockItem>) ModBlocks.EXTRACTOR.<Item, BlockItem>getSibling(Registries.ITEM);
 
-    public static void initialize() {
 
+    public static void initialize() {
+        for(UpgradeTypes type: UpgradeTypes.values()) {
+            UPGRADE_CARDS.put(type, MFFSMod.REGISTRATE.get().object(type.toString().toLowerCase()+"_upgrade")
+                    .item(properties -> new UpgradeItem(properties, type))
+                    .defaultLang()
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.mcLoc("item/generated"))
+                            .texture("layer0", prov.modLoc("item/upgrades/" + type.toString().toLowerCase()+"_upgrade")))
+                    .register());
+        }
     }
 }

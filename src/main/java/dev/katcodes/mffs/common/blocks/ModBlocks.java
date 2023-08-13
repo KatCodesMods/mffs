@@ -26,6 +26,7 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
+import dev.katcodes.mffs.common.blocks.entities.ExtractorBlockEntity;
 import dev.katcodes.mffs.common.blocks.entities.GeneratorEntity;
 import dev.katcodes.mffs.common.libs.LibBlocks;
 import dev.katcodes.mffs.common.tags.ModTags;
@@ -33,6 +34,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.Tags;
 
@@ -67,6 +69,8 @@ public class ModBlocks {
             .tag(BlockTags.NEEDS_STONE_TOOL)
             .tag(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
             .tag(ModTags.BlockTags.MONAZIT_ORE)
+            .properties(properties -> properties.strength(3.0f,3.0f))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .item()
             .tag(Tags.Items.ORES)
             .tag(Tags.Items.ORES_IN_GROUND_STONE)
@@ -100,6 +104,8 @@ public class ModBlocks {
                         .save(prov);
 
             })
+            .properties(properties -> properties.strength(3.0f,3.0f))
+            .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
             .item()
             .model((ctx, provider) -> provider.withExistingParent(ctx.getName(), provider.modLoc("block/generator_off")))
             .build()
@@ -115,6 +121,9 @@ public class ModBlocks {
                             (ctx, provider) ->
                                     registerSimpleActivatableMachine(ctx.get(), LibBlocks.CAPACITOR, provider))
                     .defaultLang()
+
+                    .properties(properties -> properties.strength(3.0f,3.0f))
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .item()
                     .model((ctx, provider) -> provider.withExistingParent(ctx.getName(), provider.modLoc("block/capacitor_off")))
                     .build()
@@ -130,8 +139,12 @@ public class ModBlocks {
                             (ctx, provider) ->
                                     registerSimpleActivatableMachine(ctx.get(), LibBlocks.EXTRACTOR, provider))
                     .defaultLang()
+                    .properties(properties -> properties.strength(3.0f,3.0f))
+                    .properties(BlockBehaviour.Properties::requiresCorrectToolForDrops)
                     .item()
                     .model((ctx, provider) -> provider.withExistingParent(ctx.getName(), provider.modLoc("block/extractor_off")))
+                    .build()
+                    .blockEntity(ExtractorBlockEntity::new)
                     .build()
                     .register();
 

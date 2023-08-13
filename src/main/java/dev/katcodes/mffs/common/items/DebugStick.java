@@ -22,6 +22,7 @@
 package dev.katcodes.mffs.common.items;
 
 import dev.katcodes.mffs.api.IDebugStickOutput;
+import dev.katcodes.mffs.api.MFFSCapabilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -42,17 +43,21 @@ public class DebugStick extends ModItem {
         Player player=context.getPlayer();
         BlockPos pos=context.getClickedPos();
         Level level = context.getLevel();
-        player.sendSystemMessage(Component.literal(side+": "+level.getBlockState(pos).getBlock().getName().getString()));
-        BlockEntity entity = level.getBlockEntity(pos);
+        if(player!=null) {
+            player.sendSystemMessage(Component.literal(side + ": " + level.getBlockState(pos).getBlock().getName().getString()));
+            BlockEntity entity = level.getBlockEntity(pos);
 
-        if(entity!=null)
-            player.sendSystemMessage(Component.literal(side+": "+ entity.toString()));
-        else
-            player.sendSystemMessage(Component.literal(side+": "+ "No block entity"));
-        if(entity instanceof IDebugStickOutput) {
-            player.sendSystemMessage(Component.literal(side+": "+ ((IDebugStickOutput) entity).getDebugStickOutput()));
+            if (entity != null)
+                player.sendSystemMessage(Component.literal(side + ": " + entity.toString()));
+            else
+                player.sendSystemMessage(Component.literal(side + ": " + "No block entity"));
+            if (entity instanceof IDebugStickOutput) {
+                player.sendSystemMessage(Component.literal(side + ": " + ((IDebugStickOutput) entity).getDebugStickOutput()));
+            }
+            if (entity != null && entity.getCapability(MFFSCapabilities.FORCE_ENERGY_CAPABILITY, null).isPresent()) {
+                player.sendSystemMessage(Component.literal(side + ": has fe capability"));
+            }
         }
-
         return InteractionResult.CONSUME;
     }
 }

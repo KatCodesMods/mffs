@@ -21,16 +21,20 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
+import dan200.computercraft.api.peripheral.IPeripheral;
 import dev.katcodes.mffs.MFFSMod;
-import dev.katcodes.mffs.api.IDebugStickOutput;
-import dev.katcodes.mffs.api.ILinkable;
-import dev.katcodes.mffs.api.MachineType;
+import dev.katcodes.mffs.api.*;
+import dev.katcodes.mffs.common.compat.Compats;
+import dev.katcodes.mffs.common.compat.ComputerCraft;
+import dev.katcodes.mffs.common.compat.peripherals.CapacitorPeripheral;
+import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.inventory.CapacitorMenu;
 import dev.katcodes.mffs.common.items.CardItem;
-import dev.katcodes.mffs.common.storage.MFFSEnergyStorage;
+import dev.katcodes.mffs.common.items.UpgradeItem;
 import dev.katcodes.mffs.common.world.NetworkWorldData;
 import dev.katcodes.mffs.common.world.data.NetworkData;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -46,12 +50,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILinkable, IDebugStickOutput, MenuProvider {
 
@@ -61,6 +69,17 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     private String networkName;
     private boolean initialized = false;
     int tickCount = 0;
+
+    private int powerMode = 0;
+
+
+
+
+
+    private IItemHandlerModifiable upgradesHandler = createUpgradeHandler(this);
+    private LazyOptional<IItemHandler> upgradesHandlerLazyOptional = LazyOptional.of(() -> upgradesHandler);
+
+
     public final ContainerData containerData=new ContainerData() {
         @Override
         public int get(int pIndex) {
@@ -68,21 +87,46 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
                 return CapacitorBlockEntity.this.getCurrentMode();
             else if(pIndex==1)
                 return 4;
+            else if(pIndex==2)
+                return CapacitorBlockEntity.this.getPowerMode();
+            else if(pIndex==3)
+                return CapacitorBlockEntity.this.getTransmitRange();
+            else if(pIndex==4)
+                return CapacitorBlockEntity.this.getCapacity();
+            else if(pIndex==5)
+                return CapacitorBlockEntity.this.getEnergy();
             return 0;
         }
-
         @Override
         public void set(int pIndex, int pValue) {
             if(pIndex==0)
                 CapacitorBlockEntity.this.setCurrentMode(pValue);
+            if(pIndex==2)
+                CapacitorBlockEntity.this.setPowerMode(pValue);
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 6;
         }
     };
 
+    public int getTransmitRange() {
+        return 8 * (upgradesHandler.getStackInSlot(1).getCount()+1);
+
+    }
+
+    public int getCapacity() {
+        AtomicInteger capacity= new AtomicInteger();
+        getNetworkData().ifPresent(data -> capacity.set(data.getMaxFEStored()));
+        return capacity.get();
+    }
+
+    public int getEnergy() {
+        AtomicInteger energy= new AtomicInteger();
+        getNetworkData().ifPresent(data -> energy.set(data.getFEStored()));
+        return energy.get();
+    }
     @Override
     protected void saveAdditional(@NotNull CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
@@ -90,6 +134,8 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
         compoundTag.putInt("capcity",capacity);
         if(networkUUID!=null)
             compoundTag.putUUID("networkID", networkUUID);
+        compoundTag.putInt("powerMode", powerMode);
+        compoundTag.put("upgrades", ((ItemStackHandler) upgradesHandler).serializeNBT());
     }
 
     @Override
@@ -103,6 +149,11 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
                 onNetworkChange(newUUID);
             }
         }
+        if(compoundTag.contains("powerMode"))
+            powerMode = compoundTag.getInt("powerMode");
+        if(compoundTag.contains("upgrades")){
+            ((ItemStackHandler) upgradesHandler).deserializeNBT(compoundTag.getCompound("upgrades"));
+        }
 
     }
 
@@ -112,11 +163,11 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
             return;
         if(level.isClientSide) {
             if(NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID).isPresent()) {
-                networkName = NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID).get().getName();
+                networkName = ((NetworkData)NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID).resolve().get()).getName();
             }
         } else {
             if(getNetworkData(newUUID).isPresent())
-            networkName = getNetworkData(newUUID).get().getName();
+            networkName = ((NetworkData)getNetworkData(newUUID).resolve().get()).getName();
             this.setChanged();;
         }
     }
@@ -157,12 +208,12 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
         }
     }
 
-    public Optional<NetworkData> getNetworkData(UUID uuid) {
+    public LazyOptional<IForceEnergyCapability> getNetworkData(UUID uuid) {
         if(uuid==null)
-            return Optional.empty();
+            return LazyOptional.empty();
         return NetworkWorldData.get().getNetwork(uuid);
     }
-    public Optional<NetworkData> getNetworkData() {
+    public LazyOptional<IForceEnergyCapability> getNetworkData() {
         return getNetworkData(networkUUID);
     }
 
@@ -198,18 +249,34 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
 
     }
 
+    private void checkSlots() {
+
+        int curCount=upgradesHandler.getStackInSlot(0).getCount();
+        int newCap= MFFSConfigs.CAPACITOR_CAPACITY.get() + ( MFFSConfigs.CAPACITOR_UPGRADE_CAPACITY.get() * curCount);
+        this.getNetworkData().ifPresent(data -> {
+            if(data.getMaxFEStored() != newCap) {
+                data.setMaxFEStored(newCap);
+                if(data.getFEStored()>newCap)
+                    data.setFEStored(newCap);
+            }
+        });
+    }
+
     public void serverTick(Level level, BlockPos pos, BlockState state) {
 
        this.tickCount++;
+       if(tickCount%20 ==0)
+           checkSlots();
+
         if(!this.initialized && this.tickCount >= 20 && this.networkUUID!=null){
             MFFSMod.LOGGER.info("Initializing Capacitor");
-            Optional<NetworkData> data=this.getNetworkData();
+            LazyOptional<IForceEnergyCapability> data=this.getNetworkData();
             if(data.isPresent()) {
-                NetworkData network=data.get();
-                this.capacity=network.getCapacity();
-                this.energy=network.getEnergy();
+                IForceEnergyCapability network=data.orElseThrow(()->new RuntimeException("capability was present, then disapeared"));
+                this.capacity=network.getMaxFEStored();
+                this.energy=network.getFEStored();
                 this.setChanged();
-                network.putMachine(this.getMachineType(),GlobalPos.of(level.dimension(),this.worldPosition));
+                ((NetworkData)network).putMachine(this.getMachineType(),GlobalPos.of(level.dimension(),this.worldPosition));
                 this.initialized=true;
             }
         }
@@ -222,7 +289,7 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
 
     @Override
     public String getDebugStickOutput() {
-        Optional<NetworkData> data=this.getNetworkData();
+        LazyOptional<IForceEnergyCapability> data=this.getNetworkData();
         return data.map(networkData -> "Network Info?" + networkData.toString()).orElse("No Network");
     }
 
@@ -245,5 +312,68 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     @Override
     public boolean getDefaultActive() {
         return true;
+    }
+
+    public int getPowerMode() {
+        return powerMode;
+    }
+
+    public void setPowerMode(int powerMode) {
+        this.powerMode = powerMode;
+        this.setChanged();
+    }
+
+    public void togglePowerMode() {
+        this.setPowerMode((this.getPowerMode() + 1) % 5);
+    }
+
+    public static IItemHandlerModifiable createUpgradeHandler(CapacitorBlockEntity thisEntity) {
+        return new ItemStackHandler(2) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                super.onContentsChanged(slot);
+                if(thisEntity!=null)
+                    thisEntity.setChanged();
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                if (!(stack.getItem() instanceof UpgradeItem))
+                    return false;
+                if (slot == 0)
+                    return ((UpgradeItem) stack.getItem()).getType() == UpgradeTypes.Capacity;
+                else if (slot == 1)
+                    return ((UpgradeItem) stack.getItem()).getType() == UpgradeTypes.Range;
+                return false;
+            }
+        };
+
+        //return new UpgradeStackHandler(MachineType.CAPACITOR,thisEntity);
+
+    }
+
+//    @Override
+//    public void invalidateCaps() {
+//        super.invalidateCaps();
+//        upgradesHandlerLazyOptional.invalidate();
+//    }
+//
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if(cap == MFFSCapabilities.FORCE_ENERGY_CAPABILITY &&  this.getNetworkData().isPresent())
+            return this.getNetworkData().cast();
+        if (Compats.isCCLoaded && cap == ComputerCraft.CAPABILITY_PERIPHERAL)
+            return ComputerCraft.getCapacitorPeripheral(this).cast();
+        return super.getCapability(cap, side);
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
+        return super.getCapability(cap);
+    }
+
+    public IItemHandlerModifiable getUpgradesHandler() {
+        return upgradesHandler;
     }
 }

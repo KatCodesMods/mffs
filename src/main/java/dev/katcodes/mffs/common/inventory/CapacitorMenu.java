@@ -22,6 +22,7 @@
 package dev.katcodes.mffs.common.inventory;
 
 import dev.katcodes.mffs.common.blocks.entities.CapacitorBlockEntity;
+import dev.katcodes.mffs.common.storage.UpgradeStackHandler;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -39,26 +40,23 @@ import org.jetbrains.annotations.Nullable;
 
 public class CapacitorMenu extends AbstractSwitchableMachineMenu {
 
-    private CapacitorBlockEntity entity;
-
     public CapacitorMenu(@Nullable MenuType<?> p_38851_, int id, final Inventory playerInventory) {
         super(p_38851_,id);
-        this.data=new SimpleContainerData(2);
-        addSlots(playerInventory);
+        this.data=new SimpleContainerData(6);
+        addSlots(CapacitorBlockEntity.createUpgradeHandler(null),playerInventory);
     }
 
     public CapacitorMenu(int windowId, final Inventory playerInventory, final CapacitorBlockEntity entity, ContainerData data) {
-        super(ModMenus.CAPACITOR.get(), windowId, playerInventory, data);
+        super(ModMenus.CAPACITOR.get(), windowId, playerInventory, data, entity);
         this.playerEntity = playerInventory.player;
         this.playerInventory = playerInventory;
         this.level = playerInventory.player.level();
-        //this.data=data;
-        this.entity=entity;
-        addSlots(playerInventory);
+        addSlots(((CapacitorBlockEntity)this.entity).getUpgradesHandler(), playerInventory);
 
     }
-    private void addSlots(Inventory inventory) {
-
+    private void addSlots(IItemHandler upgrades, Inventory inventory) {
+        addSlot(new SlotItemHandler(upgrades, 0, 154, 47));
+        addSlot(new SlotItemHandler(upgrades, 1, 154, 67));
         layoutPlayerInventorySlots(8, 125,new InvWrapper(inventory));
 
         this.addDataSlots(data);
@@ -67,8 +65,8 @@ public class CapacitorMenu extends AbstractSwitchableMachineMenu {
 
     @Override
     public boolean clickMenuButton(Player pPlayer, int pId) {
-        if(pId==0) {
-            entity.toggleMode();
+        if(pId==1) {
+            ((CapacitorBlockEntity)entity).togglePowerMode();
             return true;
         }
         return super.clickMenuButton(pPlayer, pId);
@@ -108,6 +106,22 @@ public class CapacitorMenu extends AbstractSwitchableMachineMenu {
     @Override
     public boolean stillValid(Player p_38874_) {
         return true;
+    }
+
+    public int getPowerMode() {
+        return data.get(2);
+    }
+
+    public int getTransmitRange() {
+        return data.get(3);
+    }
+
+    public int getCapacity() {
+        return data.get(4);
+    }
+
+    public int getEnergy() {
+        return data.get(5);
     }
 
 }

@@ -29,6 +29,12 @@ public class MFFSConfigs {
 
     public static ForgeConfigSpec.IntValue GENERATOR_GENERATE;
 
+    public static ForgeConfigSpec.IntValue CAPACITOR_CAPACITY;
+    public static ForgeConfigSpec.IntValue CAPACITOR_RANGE;
+    public static ForgeConfigSpec.IntValue CAPACITOR_UPGRADE_CAPACITY;
+    public static ForgeConfigSpec.IntValue CAPACITOR_UPGRADE_RANGE;
+
+
     static  {
         ForgeConfigSpec.Builder configBuilder = new ForgeConfigSpec.Builder();
         setupConfig(configBuilder);
@@ -40,7 +46,14 @@ public class MFFSConfigs {
         configBuilder.push("generator");
         GENERATOR_GENERATE = configBuilder.comment("RF generated per fuel item").defineInRange("generate", 200, 0, Integer.MAX_VALUE);
         configBuilder.pop();
+        configBuilder.push("capacitor");
+        CAPACITOR_CAPACITY = configBuilder.comment("FE capacity of capacitor").defineInRange("capacity", 10000000, 0, Integer.MAX_VALUE);
+        CAPACITOR_UPGRADE_CAPACITY = configBuilder.comment("FE capacity of capacitor upgrade").defineInRange("upgrade_capacity", 2000000, 0, Integer.MAX_VALUE);
+        CAPACITOR_RANGE = configBuilder.comment("Range of capacitor").defineInRange("range", 8, 0, Integer.MAX_VALUE);
+        CAPACITOR_UPGRADE_RANGE = configBuilder.comment("Range of capacitor upgrade").defineInRange("upgrade_range", 1, 0, Integer.MAX_VALUE);
+
     }
+
 
 
 }

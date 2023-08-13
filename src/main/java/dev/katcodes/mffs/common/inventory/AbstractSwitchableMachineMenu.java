@@ -36,22 +36,32 @@ public abstract class AbstractSwitchableMachineMenu extends AbstractContainerMen
     protected Level level;
     protected Inventory playerInventory;
     protected ContainerData data;
-
+    protected SwitchableBlockEntities entity;
     protected AbstractSwitchableMachineMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
         super(pMenuType, pContainerId);
     }
 
-    public AbstractSwitchableMachineMenu(@Nullable MenuType<?> pMenuType, int windowId, final Inventory playerInventory,  ContainerData data) {
+    public AbstractSwitchableMachineMenu(@Nullable MenuType<?> pMenuType, int windowId, final Inventory playerInventory,  ContainerData data, SwitchableBlockEntities entity) {
         super(pMenuType, windowId);
         this.playerEntity = playerInventory.player;
         this.playerInventory = playerInventory;
         this.level = playerInventory.player.level();
         this.data=data;
+        this.entity=entity;
     }
-
+    @Override
+    public boolean clickMenuButton(Player pPlayer, int pId) {
+        if(pId==0) {
+            entity.toggleMode();
+            return true;
+        }
+        return super.clickMenuButton(pPlayer, pId);
+    }
     public int getMode() {
         return data.get(0);
     }
+
+
     public int getMaxMode() {
         return data.get(1);
     }
