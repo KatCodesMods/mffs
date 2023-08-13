@@ -1,3 +1,12 @@
+## [0.14.1-rc.6](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.5...v0.14.1-rc.6) (2023-08-13)
+
+
+### Features
+
+* Add Capacitor and CC compat ([df462bd](https://github.com/KatCodesMods/mffs/commit/df462bdc6204488a000b23db38fdccb428eadb6e))
+
+
+
 ## [0.14.1-rc.5](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.4...v0.14.1-rc.5) (2023-06-30)
 
 
@@ -27,15 +36,6 @@
 
 * Add a debug temp to Generator ([1f6ff45](https://github.com/KatCodesMods/mffs/commit/1f6ff456c005fbe52477ae3a1f74498e7862d075))
 * Fix spelling ([4ef580c](https://github.com/KatCodesMods/mffs/commit/4ef580c6aff7efb96d5faf2020bcd866e9a3fae3))
-
-
-
-## [0.14.1-rc.1](https://github.com/KatCodesMods/mffs/compare/v0.14.1-rc.0...v0.14.1-rc.1) (2023-06-29)
-
-
-### Features
-
-* Add Debug Stick API ([1974bfc](https://github.com/KatCodesMods/mffs/commit/1974bfc6d609ae3bdc7acf828cbe3ea3b038b981))
 
 
 
