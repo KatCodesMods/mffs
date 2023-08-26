@@ -24,16 +24,17 @@ package dev.katcodes.mffs.common.blocks.entities;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static dev.katcodes.mffs.common.blocks.ModBlocks.CAPACITOR;
-import static dev.katcodes.mffs.common.blocks.ModBlocks.GENERATOR;
+import static dev.katcodes.mffs.common.blocks.ModBlocks.*;
 
 
 public class ModBlockEntities {
 
     public static final BlockEntityEntry<GeneratorEntity> GENERATOR_ENTITY = BlockEntityEntry.cast(GENERATOR.getSibling(ForgeRegistries.BLOCK_ENTITY_TYPES));
     public static final BlockEntityEntry<CapacitorBlockEntity> CAPACITOR_ENTITY = BlockEntityEntry.cast(CAPACITOR.getSibling(ForgeRegistries.BLOCK_ENTITY_TYPES));
+    public static final BlockEntityEntry<ExtractorBlockEntity> EXTRACTOR_ENTITY = BlockEntityEntry.cast(EXTRACTOR.getSibling(ForgeRegistries.BLOCK_ENTITY_TYPES));
+    public static final BlockEntityEntry<ProjectorBlockEntity> PROJECTOR_ENTITY = BlockEntityEntry.cast(PROJECTOR.getSibling(ForgeRegistries.BLOCK_ENTITY_TYPES));
 
-
+    public static final BlockEntityEntry<ForceFieldBlockEntity> FORCEFIELD_ENTITY = BlockEntityEntry.cast(FORCE_FIELD.getSibling(ForgeRegistries.BLOCK_ENTITY_TYPES));
     public static void initialize() {
 
     }

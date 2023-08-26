@@ -29,4 +29,10 @@ public class LibBlocks {
     public static final String CAPACITOR="capacitor";
 
     public static final String EXTRACTOR="extractor";
+
+    public static final String PROJECTOR="projector";
+
+    public static final String FORCE_FIELD="force_field";
+
+    public static final String MONAZIT_BLOCK="monazit_block";
 }

@@ -27,4 +27,9 @@ public class LibItems {
     public static final String POWER_LINK_CARD = "power_link_card";
 
     public static final String DEBUG_STICK = "debug_stick";
+
+    public static final String NETWORK_CONNECTOR="network_connector";
+    public static final String FOCUS_MATRIX="focus_matrix";
+
+
 }

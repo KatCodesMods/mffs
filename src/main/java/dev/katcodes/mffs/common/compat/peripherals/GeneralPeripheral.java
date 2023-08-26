@@ -2,6 +2,7 @@ package dev.katcodes.mffs.common.compat.peripherals;
 
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import dev.katcodes.mffs.common.blocks.AbstractActivatableBlock;
 import dev.katcodes.mffs.common.blocks.entities.SwitchableBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,8 +15,8 @@ public abstract class GeneralPeripheral implements IPeripheral {
     }
 
     @LuaFunction
-    public int getActive() {
-        return entity.getCurrentMode();
+    public boolean getActive() {
+        return entity.getBlockState().getValue(AbstractActivatableBlock.ACTIVATED) ;
     }
 
     @LuaFunction

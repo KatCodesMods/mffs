@@ -47,7 +47,18 @@ public class SimpleForceStorage  implements IForceEnergyCapability {
 
     @Override
     public int receiveFE(int maxReceive, boolean simulate) {
-        return 0;
+        int change = 0;
+        int freeSpace = maxFEStored - FEStored;
+        if(maxReceive <= freeSpace)
+        {
+            if(!simulate)
+                FEStored+=maxReceive;
+        } else {
+            change = maxReceive - freeSpace;
+            if(!simulate)
+                FEStored=maxFEStored;
+        }
+        return change;
     }
 
     @Override
@@ -57,31 +68,31 @@ public class SimpleForceStorage  implements IForceEnergyCapability {
 
     @Override
     public int getFEStored() {
-        return 0;
+        return FEStored;
     }
 
     @Override
     public void setFEStored(int amount) {
-
+        FEStored = amount;
     }
 
     @Override
     public int getMaxFEStored() {
-        return 0;
+        return maxFEStored;
     }
 
     @Override
     public void setMaxFEStored(int maxFEStored) {
-
+        this.maxFEStored = maxFEStored;
     }
 
     @Override
     public boolean canExtract() {
-        return false;
+        return FEStored > 0;
     }
 
     @Override
     public boolean canReceive() {
-        return false;
+        return FEStored < maxFEStored;
     }
 }

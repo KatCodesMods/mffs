@@ -148,7 +148,6 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
-    maven { url 'https://maven.blamejared.com' }
     maven {
         url "https://squiddev.cc/maven/"
         content {
@@ -156,8 +155,12 @@ repositories {
             includeModule("org.squiddev", "Cobalt")
         }
     }
+
     maven { url 'https://maven.blamejared.com' }
     mavenLocal()
+    flatDir {
+        dirs "localMods"
+    }
 }
 jarJar.enable()
 
@@ -193,6 +196,10 @@ dependencies {
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}"))
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FORGE:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${minecraft_version}-${patchouli_version}-FORGE")
+    runtimeOnly fg.deobf("blank:energizedpower:1.20.1-1.7.6")
+
+
+
 //    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 //    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 

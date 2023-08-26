@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "mffs:block/projector/adv_cube_module/side_off",
+    "side": "mffs:block/projector/adv_cube_module/side_off",
+    "top": "mffs:block/projector/adv_cube_module/front_off"
+  }
+}

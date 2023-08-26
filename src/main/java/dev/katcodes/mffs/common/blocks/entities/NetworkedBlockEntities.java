@@ -21,12 +21,14 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
+import dev.katcodes.mffs.api.IForceEnergyCapability;
 import dev.katcodes.mffs.api.MachineType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.util.LazyOptional;
 
 import java.util.UUID;
 
@@ -52,4 +54,6 @@ public abstract class NetworkedBlockEntities extends BlockEntity {
         else
             blockEntity.serverTick(level,pos,state);
     }
+
+
 }

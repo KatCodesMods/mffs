@@ -21,7 +21,10 @@
 
 package dev.katcodes.mffs.common.blocks;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -40,7 +43,13 @@ public abstract class AbstractActivatableBlock extends AbstractMachineBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(ACTIVATED, false));
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_48725_) {
-        p_48725_.add(FACING,ACTIVATED);
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(FACING,ACTIVATED);
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighbor,boolean pIsMoving) {
+        super.onNeighborChange(state, level, pos, neighbor);
     }
 }

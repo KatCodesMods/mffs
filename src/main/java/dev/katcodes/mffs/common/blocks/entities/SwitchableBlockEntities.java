@@ -22,8 +22,10 @@
 package dev.katcodes.mffs.common.blocks.entities;
 
 import dev.katcodes.mffs.api.MachineType;
+import dev.katcodes.mffs.common.blocks.AbstractActivatableBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +33,9 @@ import org.jetbrains.annotations.NotNull;
 public abstract class SwitchableBlockEntities extends NetworkedBlockEntities {
 
     private int currentMode = getDefaultMode();
+
+    protected int tickCount = 0;
+    protected boolean initialized = false;
 
 
     public int getDefaultMode() {
@@ -59,16 +64,19 @@ public abstract class SwitchableBlockEntities extends NetworkedBlockEntities {
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag p_187471_) {
-        super.saveAdditional(p_187471_);
-        p_187471_.putInt("currentMode",currentMode);
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        pTag.putInt("currentMode",currentMode);
+        pTag.putInt("tickCount", tickCount);
     }
 
     @Override
-    public void load(@NotNull CompoundTag p_155245_) {
-        super.load(p_155245_);
-        if(p_155245_.contains("currentMode"))
-            currentMode = p_155245_.getInt("currentMode");
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        if(pTag.contains("currentMode"))
+            currentMode = pTag.getInt("currentMode");
+        if(pTag.contains("tickCount"))
+            tickCount=pTag.getInt("tickCount");
     }
 
     public void toggleMode() {
@@ -78,6 +86,39 @@ public abstract class SwitchableBlockEntities extends NetworkedBlockEntities {
         if(nextMode >= validModes.length)
             nextMode = 0;
         setCurrentMode(nextMode);
+    }
+
+    protected abstract void checkSlots();
+
+    protected boolean firstInit() {
+        return false;
+    }
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        this.tickCount++;
+        if(tickCount%20 ==0) {
+            checkSlots();
+            checkRedstone();
+        }
+
+        if(!this.initialized && this.tickCount >= 20 && this.getNetworkId()!=null){
+            initialized = firstInit();
+        }
+
+
+
+    }
+
+    protected void checkRedstone() {
+        boolean redstone = level.hasNeighborSignal(getBlockPos());
+        boolean activatedState = !getDefaultActive();
+        if(currentMode==1) {
+            if(redstone && getBlockState().getValue(AbstractActivatableBlock.ACTIVATED) == activatedState)
+            {
+                level.setBlock(worldPosition,getBlockState().cycle(AbstractActivatableBlock.ACTIVATED),2);
+            } else if(!redstone && getBlockState().getValue(AbstractActivatableBlock.ACTIVATED) != activatedState){
+                level.setBlock(worldPosition,getBlockState().cycle(AbstractActivatableBlock.ACTIVATED),2);
+            }
+        }
     }
 
 }

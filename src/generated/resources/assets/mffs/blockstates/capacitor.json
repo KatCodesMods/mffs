@@ -1,33 +1,55 @@
 {
   "variants": {
+    "activated=false,facing=down": {
+      "model": "mffs:block/capacitor_off",
+      "x": 180
+    },
     "activated=false,facing=east": {
       "model": "mffs:block/capacitor_off",
+      "x": 90,
       "y": 90
     },
     "activated=false,facing=north": {
-      "model": "mffs:block/capacitor_off"
+      "model": "mffs:block/capacitor_off",
+      "x": 90
     },
     "activated=false,facing=south": {
       "model": "mffs:block/capacitor_off",
+      "x": 90,
       "y": 180
+    },
+    "activated=false,facing=up": {
+      "model": "mffs:block/capacitor_off"
     },
     "activated=false,facing=west": {
       "model": "mffs:block/capacitor_off",
+      "x": 90,
       "y": 270
+    },
+    "activated=true,facing=down": {
+      "model": "mffs:block/capacitor_on",
+      "x": 180
     },
     "activated=true,facing=east": {
       "model": "mffs:block/capacitor_on",
+      "x": 90,
       "y": 90
     },
     "activated=true,facing=north": {
-      "model": "mffs:block/capacitor_on"
+      "model": "mffs:block/capacitor_on",
+      "x": 90
     },
     "activated=true,facing=south": {
       "model": "mffs:block/capacitor_on",
+      "x": 90,
       "y": 180
+    },
+    "activated=true,facing=up": {
+      "model": "mffs:block/capacitor_on"
     },
     "activated=true,facing=west": {
       "model": "mffs:block/capacitor_on",
+      "x": 90,
       "y": 270
     }
   }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "mffs:monazit_block"
+    },
+    "C": {
+      "item": "mffs:network_connector"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    "III",
+    "IBI",
+    "ICI"
+  ],
+  "result": {
+    "item": "mffs:capacitor"
+  },
+  "show_notification": true
+}

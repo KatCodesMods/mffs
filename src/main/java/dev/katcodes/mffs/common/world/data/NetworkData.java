@@ -23,6 +23,7 @@ package dev.katcodes.mffs.common.world.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.api.IForceEnergyCapability;
 import dev.katcodes.mffs.api.MachineType;
 import net.minecraft.core.BlockPos;
@@ -42,15 +43,17 @@ public class NetworkData  implements IForceEnergyCapability {
     private int energy;
     private int capacity;
     private String name;
+    private int distance;
 
     private Map<MachineType, List<GlobalPos>> networkMachines;
 
-    public NetworkData(UUID uuid, int energy, int capacity, Map<MachineType, List<GlobalPos>> networkMachines, String name) {
+    public NetworkData(UUID uuid, int energy, int capacity, Map<MachineType, List<GlobalPos>> networkMachines, String name, int distance) {
         this.uuid = uuid;
         this.energy = energy;
         this.capacity = capacity;
         this.networkMachines = networkMachines;
         this.name = name;
+        this.distance=distance;
     }
 
     public NetworkData(UUID uuid, String name) {
@@ -89,7 +92,8 @@ public class NetworkData  implements IForceEnergyCapability {
                     Codec.INT.fieldOf("energy").forGetter(NetworkData::getEnergy),
                     Codec.INT.fieldOf("capacity").forGetter(NetworkData::getCapacity),
                     NETWORK_MACHINES_CODEC.fieldOf("machines").forGetter(NetworkData::getNetworkMachines),
-                    Codec.STRING.fieldOf("name").forGetter(NetworkData::getName)
+                    Codec.STRING.fieldOf("name").forGetter(NetworkData::getName),
+                    Codec.INT.fieldOf("distance").forGetter(NetworkData::getDistance)
 
             ).apply(instance, NetworkData::new));
 
@@ -105,7 +109,7 @@ public class NetworkData  implements IForceEnergyCapability {
         for(Map.Entry<MachineType,List<GlobalPos>> entry : immutableData.getNetworkMachines().entrySet()) {
             newMap.put(entry.getKey(),new ArrayList<>(entry.getValue()));
         }
-        NetworkData data = new NetworkData(immutableData.getUuid(),immutableData.getEnergy(),immutableData.getCapacity(),newMap,immutableData.getName());
+        NetworkData data = new NetworkData(immutableData.getUuid(),immutableData.getEnergy(),immutableData.getCapacity(),newMap,immutableData.getName(),immutableData.getDistance());
         return data;
     }
 
@@ -116,7 +120,19 @@ public class NetworkData  implements IForceEnergyCapability {
 
     @Override
     public int receiveFE(int maxReceive, boolean simulate) {
-        return 0;
+        int change = 0;
+        int freeSpace = capacity - energy;
+        if(maxReceive <= freeSpace)
+        {
+            if(!simulate)
+                energy+=maxReceive;
+        } else {
+            change = maxReceive - freeSpace;
+            if(!simulate)
+                energy=capacity;
+        }
+        MFFSMod.LOGGER.info("Received "+(maxReceive-change)+" FE");
+        return change;
     }
 
     @Override
@@ -175,5 +191,14 @@ public class NetworkData  implements IForceEnergyCapability {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public NetworkData setDistance(int distance) {
+        this.distance = distance;
+        return this;
     }
 }

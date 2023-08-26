@@ -22,6 +22,7 @@
 package dev.katcodes.mffs.common.world;
 
 import dev.katcodes.mffs.api.IForceEnergyCapability;
+import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.networking.MFFSPacketHandler;
 import dev.katcodes.mffs.common.networking.packets.NetworkNamesPacket;
 import dev.katcodes.mffs.common.world.data.NetworkData;
@@ -90,7 +91,7 @@ public class NetworkWorldData extends SavedData {
 
     public NetworkData createNetwork(Level level,int energy, int capacity) {
         UUID uuid = UUID.randomUUID();
-        NetworkData data = new NetworkData(uuid, energy, capacity, new HashMap<>(),uuid.toString());
+        NetworkData data = new NetworkData(uuid, energy, capacity, new HashMap<>(),uuid.toString(), MFFSConfigs.CAPACITOR_RANGE.get());
         networkData.put(uuid, data);
         this.setDirty();
         if(!level.isClientSide) {
@@ -104,11 +105,11 @@ public class NetworkWorldData extends SavedData {
         return data;
     }
 
-    public LazyOptional<IForceEnergyCapability> getNetwork(UUID uuid) {
+    public IForceEnergyCapability getNetwork(UUID uuid) {
         if(networkData.containsKey(uuid)) {
-            return LazyOptional.of(() -> networkData.get(uuid));
+            return networkData.get(uuid);
         }
-        return LazyOptional.empty();
+        return null;
         //return networkData.get(uuid);
     }
 

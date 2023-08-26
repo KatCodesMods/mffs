@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/orientable_vertical",
+  "textures": {
+    "front": "mffs:block/projector/tube_module/front_off",
+    "side": "mffs:block/projector/tube_module/side_off"
+  }
+}

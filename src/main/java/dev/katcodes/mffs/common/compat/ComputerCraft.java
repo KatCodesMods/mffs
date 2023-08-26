@@ -17,8 +17,8 @@ public class ComputerCraft {
 
         });
     }
-    public static LazyOptional<IPeripheral> getCapacitorPeripheral(CapacitorBlockEntity entity)
+    public static <T> LazyOptional<T> getCapacitorPeripheral(CapacitorBlockEntity entity)
     {
-        return LazyOptional.of(() -> new CapacitorPeripheral(entity));
+        return LazyOptional.of(() -> new CapacitorPeripheral(entity)).cast();
     }
 }

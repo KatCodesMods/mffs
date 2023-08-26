@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "block_type=area": {
+      "model": "mffs:block/force_field_area"
+    },
+    "block_type=camo": {
+      "model": "mffs:block/force_field_camo"
+    },
+    "block_type=containment": {
+      "model": "mffs:block/force_field_containment"
+    },
+    "block_type=default": {
+      "model": "mffs:block/force_field_default"
+    },
+    "block_type=zapper": {
+      "model": "mffs:block/force_field_zapper"
+    }
+  }
+}

@@ -27,7 +27,7 @@ import com.mojang.serialization.Codec;
  * The Machine type.
  */
 public enum MachineType {
-    GENERATOR, CAPACITOR, EXTRACTOR;
+    GENERATOR, CAPACITOR, EXTRACTOR, PROJECTOR, SEC_STATION,DEF_STATION,CONVERTER, JAMMER, FIELD_FUSION,SEC_STORAGE, CONTROL_SYSTEM;
 
     /**
      * The constant MACHINE_TYPE_CODEC.

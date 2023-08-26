@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ec6aa7b-2373-4dc7-b7b5-a9e05ca77581" name="Changes" comment="feat: Add Capacitor and CC compat">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/force_field.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/projector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/force_field_area.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/force_field_camo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/force_field_containment.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/force_field_default.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/force_field_zapper.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_adv_cube_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_adv_cube_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_adv_cube_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_adv_cube_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_containment_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_containment_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_containment_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_containment_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_cube_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_cube_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_cube_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_cube_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_deflector_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_deflector_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_deflector_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_deflector_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_diagonal_wall_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_diagonal_wall_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_diagonal_wall_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_diagonal_wall_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_empty_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_empty_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_empty_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_empty_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_sphere_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_sphere_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_sphere_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_sphere_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_tube_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_tube_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_tube_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_tube_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_wall_module_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_wall_module_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_wall_module_vertical_off.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/projector_wall_module_vertical_on.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/adv_cube_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/block_breaker.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/booster_upgrade.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/camouflage.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/containment_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/cube_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/defense_station.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/deflector_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/diagonal_wall_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/field_fusion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/field_jammer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/field_manipulator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/focus_matrix.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/mob_defence.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/network_connector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/projector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/sphere_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/sponge.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/touch_damage.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/tube_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/item/wall_module.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/advancements/recipes/misc/capacitor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/advancements/recipes/misc/extractor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/advancements/recipes/misc/monazit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/advancements/recipes/misc/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/advancements/recipes/misc/network_connector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/loot_tables/blocks/force_field.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/loot_tables/blocks/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/loot_tables/blocks/projector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/recipes/capacitor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/recipes/extractor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/recipes/monazit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/recipes/monazit_block.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/mffs/recipes/network_connector.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/ForcefieldTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/IChecksOnAll.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/IInteriorCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/IModularProjector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/client/gui/screens/ExtractorScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/client/gui/screens/ProjectorScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/client/renderers/ForcefieldRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ForceFieldBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ProjectorBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ForceFieldBlockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/PoweredBlockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ProjectorBlockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/ExtractorMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/ProjectorMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/AdvCubeModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/ContainmentModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/CubeModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/DeflectorModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/DiagonalWallModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/Module3DBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/ModuleBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/ProjectorModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/SphereModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/TubeModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/modules/WallModuleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/DefenseStationOptionItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/FieldFusionOptionItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/FieldJammerOptionItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/MobDefenceOptionItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/Options.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/ProjectorOptionBaseItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/options/SpongeOptionItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/ForceFieldBlockInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/ForceFieldBlockStack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/LevelMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/force_field/area.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/force_field/camo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/force_field/containment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/force_field/default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/force_field/zapper.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/monazit_block.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/adv_cube_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/adv_cube_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/adv_cube_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/adv_cube_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/containment_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/containment_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/containment_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/containment_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/cube_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/cube_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/cube_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/cube_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/deflector_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/deflector_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/deflector_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/deflector_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/diagonal_wall_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/diagonal_wall_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/diagonal_wall_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/diagonal_wall_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/empty/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/empty/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/empty/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/empty/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/sphere_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/sphere_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/sphere_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/sphere_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/tube_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/tube_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/tube_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/tube_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/wall_module/front_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/wall_module/front_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/wall_module/side_off.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/wall_module/side_on.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/gui/projector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/focus_matrix.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/adv_cube_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/containment_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/cube_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/deflector_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/diagonal_wall_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/sphere_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/tube_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules/wall_module.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/network_connector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/block_breaker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/camouflage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/defense_station.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/field_fusion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/field_jammer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/field_manipulator.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/mob_defence.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/sponge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options/touch_damage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/upgrades/booster_upgrade.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/.cache/267fd091c987bb6e5c6c4a01a54eff3d1ba502cd" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/.cache/267fd091c987bb6e5c6c4a01a54eff3d1ba502cd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/capacitor.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/capacitor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/extractor.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/extractor.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/generator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/blockstates/generator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/lang/en_ud.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/lang/en_ud.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/capacitor_off.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/capacitor_off.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/capacitor_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/capacitor_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/extractor_off.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/extractor_off.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/extractor_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/extractor_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/generator_off.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/generator_off.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/generator_on.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/assets/mffs/models/block/generator_on.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/MachineType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/MachineType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/UpgradeTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/api/UpgradeTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/client/gui/screens/CapacitorScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/client/gui/screens/CapacitorScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/AbstractActivatableBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/AbstractActivatableBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/AbstractMachineBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/AbstractMachineBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ExtractorBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ExtractorBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/ModBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/CapacitorBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/CapacitorBlockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ExtractorBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ExtractorBlockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ModBlockEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ModBlockEntities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/NetworkedBlockEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/NetworkedBlockEntities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/SwitchableBlockEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/SwitchableBlockEntities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/compat/ComputerCraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/compat/ComputerCraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/compat/peripherals/GeneralPeripheral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/compat/peripherals/GeneralPeripheral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/configs/MFFSConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/configs/MFFSConfigs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/AbstractSwitchableMachineMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/AbstractSwitchableMachineMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/CapacitorMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/CapacitorMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/ModMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/inventory/ModMenus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/ModItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/PowerLinkCardItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/items/PowerLinkCardItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/libs/LibBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/libs/LibBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/libs/LibItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/libs/LibItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/misc/SimpleForceStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/misc/SimpleForceStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/NetworkWorldData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/NetworkWorldData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/data/NetworkData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/world/data/NetworkData.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2SWlVrEPbSLrkun6nQJzw2otWjy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;version/1.20&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/katrinaknight/Projects/Minecraft/MFFS/src/main/resources/assets/mffs/textures/item/modules&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/modules" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/diagonal_wall_module" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/adv_cube_module" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/containment_module" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/sphere_module" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/options" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/gui" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/empty" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/block/projector/wall_module" />
+      <recent name="$PROJECT_DIR$/src/main/resources/assets/mffs/textures/item/upgrades" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.MFFS [runClient]">
+    <configuration name="MFFS [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MFFS [genIntellijRuns]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="genIntellijRuns" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MFFS [runClient]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runClient" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MFFS [runData]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runData" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.MFFS [runClient]" />
+        <item itemvalue="Gradle.MFFS [runData]" />
+        <item itemvalue="Gradle.MFFS [build]" />
+        <item itemvalue="Gradle.MFFS [genIntellijRuns]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ec6aa7b-2373-4dc7-b7b5-a9e05ca77581" name="Changes" comment="" />
+      <created>1689270244610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689270244610</updated>
+      <workItem from="1689270246091" duration="21151000" />
+      <workItem from="1690240007700" duration="1236000" />
+      <workItem from="1690731526471" duration="663000" />
+      <workItem from="1691105011441" duration="597000" />
+      <workItem from="1691121281231" duration="2987000" />
+      <workItem from="1691798060625" duration="58120000" />
+      <workItem from="1692151417261" duration="72194000" />
+      <workItem from="1692943002587" duration="117000" />
+      <workItem from="1692943131279" duration="1100000" />
+      <workItem from="1693037833011" duration="675000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: Add Capacitor and CC compat">
+      <option name="closed" value="true" />
+      <created>1691956753188</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691956753189</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="feat: Add Capacitor and CC compat" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Capacitor and CC compat" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/storage/UpgradeStackHandler.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dev/katcodes/mffs/common/blocks/entities/ExtractorBlockEntity.java</url>
+          <line>170</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint log-message="true" log-stack="true" type="java-exception">
+          <dependency leave-enabled="true" master-id="0" />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

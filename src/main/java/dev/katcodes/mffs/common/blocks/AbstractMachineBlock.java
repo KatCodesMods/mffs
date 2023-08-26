@@ -37,7 +37,7 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock {
     /**
      * The constant FACING. This is used to set the direction of the block horizontally.
      */
-    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
 
 
@@ -56,7 +56,7 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock {
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext p_48689_) {
-        return this.defaultBlockState().setValue(FACING, p_48689_.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, p_48689_.getNearestLookingDirection().getOpposite());
     }
 
     public BlockState rotate(BlockState p_48722_, Rotation p_48723_) {
@@ -67,9 +67,8 @@ public abstract class AbstractMachineBlock extends BaseEntityBlock {
         return p_48719_.rotate(p_48720_.getRotation(p_48719_.getValue(FACING)));
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_48725_) {
-        p_48725_.add(FACING);
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(FACING);
     }
-
-
 }

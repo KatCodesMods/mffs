@@ -72,31 +72,9 @@ public class CapacitorMenu extends AbstractSwitchableMachineMenu {
         return super.clickMenuButton(pPlayer, pId);
     }
 
-    private int addSlotRange(IItemHandler handler, int index, int x, int y, int amount, int dx) {
-        for (int i = 0 ; i < amount ; i++) {
-            addSlot(new SlotItemHandler(handler, index, x, y));
-            x += dx;
-            index++;
-        }
-        return index;
-    }
 
-    private int addSlotBox(IItemHandler handler, int index, int x, int y, int horAmount, int dx, int verAmount, int dy) {
-        for (int j = 0 ; j < verAmount ; j++) {
-            index = addSlotRange(handler, index, x, y, horAmount, dx);
-            y += dy;
-        }
-        return index;
-    }
 
-    protected void layoutPlayerInventorySlots(int leftCol, int topRow, IItemHandler inventory) {
-        // Player inventory
-        addSlotBox(inventory, 9, leftCol, topRow, 9, 18, 3, 18);
 
-        // Hotbar
-        topRow += 58;
-        addSlotRange(inventory, 0, leftCol, topRow, 9, 18);
-    }
 
     @Override
     public ItemStack quickMoveStack(Player p_38941_, int p_38942_) {
@@ -122,6 +100,13 @@ public class CapacitorMenu extends AbstractSwitchableMachineMenu {
 
     public int getEnergy() {
         return data.get(5);
+    }
+
+    public int getPercentCapacity() {
+        float capacity = (float) getEnergy() /(float) getCapacity() * 100.0f;
+        if(capacity>100)
+            capacity=100;
+        return (int)capacity;
     }
 
 }

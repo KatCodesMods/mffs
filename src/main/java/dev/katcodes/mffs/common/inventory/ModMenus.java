@@ -24,7 +24,9 @@ package dev.katcodes.mffs.common.inventory;
 import com.tterrag.registrate.util.entry.MenuEntry;
 import dev.katcodes.mffs.MFFSMod;
 import dev.katcodes.mffs.client.gui.screens.CapacitorScreen;
+import dev.katcodes.mffs.client.gui.screens.ExtractorScreen;
 import dev.katcodes.mffs.client.gui.screens.GeneratorScreen;
+import dev.katcodes.mffs.client.gui.screens.ProjectorScreen;
 
 public class ModMenus {
 
@@ -34,6 +36,14 @@ public class ModMenus {
     public static final MenuEntry<CapacitorMenu> CAPACITOR =
             MFFSMod.REGISTRATE.get().menu("capacitor", (type,windowId,inv, buf)->new CapacitorMenu(type,windowId,inv), ()-> CapacitorScreen::new)
             .register();
+
+    public static final MenuEntry<ExtractorMenu> EXTRACTOR =
+            MFFSMod.REGISTRATE.get().menu("extractor", (type, windowId, inv) -> new ExtractorMenu(type,windowId,inv), () -> ExtractorScreen::new)
+                    .register();
+
+    public static final MenuEntry<ProjectorMenu> PROJECTOR =
+            MFFSMod.REGISTRATE.get().menu("projector", (type, windowId, inv) -> new ProjectorMenu(type,windowId,inv), () -> ProjectorScreen::new)
+                    .register();
 
     public static void initialize() {
     }

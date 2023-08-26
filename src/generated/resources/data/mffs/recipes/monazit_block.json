@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    },
+    {
+      "tag": "mffs:monazit"
+    }
+  ],
+  "result": {
+    "item": "mffs:monazit_block"
+  }
+}

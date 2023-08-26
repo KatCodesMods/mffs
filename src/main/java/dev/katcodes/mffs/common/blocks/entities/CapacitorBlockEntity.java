@@ -21,12 +21,10 @@
 
 package dev.katcodes.mffs.common.blocks.entities;
 
-import dan200.computercraft.api.peripheral.IPeripheral;
-import dev.katcodes.mffs.MFFSMod;
+
 import dev.katcodes.mffs.api.*;
 import dev.katcodes.mffs.common.compat.Compats;
 import dev.katcodes.mffs.common.compat.ComputerCraft;
-import dev.katcodes.mffs.common.compat.peripherals.CapacitorPeripheral;
 import dev.katcodes.mffs.common.configs.MFFSConfigs;
 import dev.katcodes.mffs.common.inventory.CapacitorMenu;
 import dev.katcodes.mffs.common.items.CardItem;
@@ -59,6 +57,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILinkable, IDebugStickOutput, MenuProvider {
@@ -67,10 +66,10 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     private int capacity;
     private int energy;
     private String networkName;
-    private boolean initialized = false;
-    int tickCount = 0;
+
 
     private int powerMode = 0;
+    protected LazyOptional<IForceEnergyCapability> forceEnergy = LazyOptional.of(() -> NetworkWorldData.get().getNetwork(this.networkUUID));
 
 
 
@@ -112,7 +111,7 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     };
 
     public int getTransmitRange() {
-        return 8 * (upgradesHandler.getStackInSlot(1).getCount()+1);
+        return MFFSConfigs.CAPACITOR_RANGE.get() * (upgradesHandler.getStackInSlot(1).getCount()+1);
 
     }
 
@@ -162,8 +161,8 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
         if(level == null)
             return;
         if(level.isClientSide) {
-            if(NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID).isPresent()) {
-                networkName = ((NetworkData)NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID).resolve().get()).getName();
+            if(NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID) != null) {
+                networkName = ((NetworkData)NetworkWorldData.CLIENT_INSTANCE.getNetwork(newUUID)).getName();
             }
         } else {
             if(getNetworkData(newUUID).isPresent())
@@ -211,10 +210,10 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
     public LazyOptional<IForceEnergyCapability> getNetworkData(UUID uuid) {
         if(uuid==null)
             return LazyOptional.empty();
-        return NetworkWorldData.get().getNetwork(uuid);
+        return forceEnergy;
     }
     public LazyOptional<IForceEnergyCapability> getNetworkData() {
-        return getNetworkData(networkUUID);
+        return getNetworkData(getNetworkId());
     }
 
     @Override
@@ -249,8 +248,8 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
 
     }
 
-    private void checkSlots() {
-
+    @Override
+    protected void checkSlots() {
         int curCount=upgradesHandler.getStackInSlot(0).getCount();
         int newCap= MFFSConfigs.CAPACITOR_CAPACITY.get() + ( MFFSConfigs.CAPACITOR_UPGRADE_CAPACITY.get() * curCount);
         this.getNetworkData().ifPresent(data -> {
@@ -260,26 +259,43 @@ public class CapacitorBlockEntity extends SwitchableBlockEntities implements ILi
                     data.setFEStored(newCap);
             }
         });
+
+        curCount = upgradesHandler.getStackInSlot(1).getCount();
+        int newRange = MFFSConfigs.CAPACITOR_RANGE.get() * (curCount + 1);
+        this.getNetworkData().ifPresent(data ->
+        {
+            if(data instanceof NetworkData networkData) {
+                if(networkData.getDistance() != newRange) {
+                    networkData.setDistance(newRange);
+                    NetworkWorldData.get().setDirty();
+                }
+            }
+        });
     }
 
-    public void serverTick(Level level, BlockPos pos, BlockState state) {
-
-       this.tickCount++;
-       if(tickCount%20 ==0)
-           checkSlots();
-
-        if(!this.initialized && this.tickCount >= 20 && this.networkUUID!=null){
-            MFFSMod.LOGGER.info("Initializing Capacitor");
-            LazyOptional<IForceEnergyCapability> data=this.getNetworkData();
-            if(data.isPresent()) {
-                IForceEnergyCapability network=data.orElseThrow(()->new RuntimeException("capability was present, then disapeared"));
-                this.capacity=network.getMaxFEStored();
-                this.energy=network.getFEStored();
-                this.setChanged();
-                ((NetworkData)network).putMachine(this.getMachineType(),GlobalPos.of(level.dimension(),this.worldPosition));
-                this.initialized=true;
+    @Override
+    protected boolean firstInit() {
+        super.firstInit();
+        AtomicBoolean present= new AtomicBoolean(false);
+        LazyOptional<IForceEnergyCapability> data = this.getNetworkData();
+        data.ifPresent(network -> {
+            this.capacity = network.getMaxFEStored();
+            this.energy = network.getFEStored();
+            this.setChanged();
+            if(network instanceof NetworkData networkData) {
+                networkData.putMachine(this.getMachineType(), GlobalPos.of(level.dimension(), this.worldPosition));
+                networkData.setDistance(this.getTransmitRange());
             }
-        }
+            present.set(true);
+        });
+
+        return present.get();
+    }
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level,pos,state);
+             //
     }
 
     @Override

@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MFFS.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MFFS.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MFFS.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MFFS.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.test.iml" filepath="$PROJECT_DIR$/.idea/modules/dev.katcodes.mffs.MFFS.test.iml" />
     </modules>
   </component>
 </project>

@@ -100,9 +100,12 @@ public class CapacitorScreen extends AbstractContainerScreen<CapacitorMenu> {
     }
 
     @Override
-    protected void renderBg(GuiGraphics p_283065_, float p_97788_, int p_97789_, int p_97790_) {
+    protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         int i = this.leftPos;
         int j = this.topPos;
-        p_283065_.blit(this.texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        int i1 = (79 * this.menu.getPercentCapacity() / 100);
+        MFFSMod.LOGGER.info("There is "+ i1 + " from percentcap - " + this.menu.getPercentCapacity() + " thus: "+ this.menu.getCapacity() + " / "+ this.menu.getEnergy());
+        pGuiGraphics.blit(this.texture, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        pGuiGraphics.blit(this.texture,i+8,j+112,176,0,i1+1,79);
     }
 }
