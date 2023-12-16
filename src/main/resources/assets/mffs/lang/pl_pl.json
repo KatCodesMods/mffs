@@ -7,12 +7,12 @@
   "item.mffs.debug_stick": "Patyk debugowania",
   "item.mffs.monazit": "Monacyt",
   "item.mffs.power_link_card": "Karta do łączenia zasilania",
-  "mffs.network.already_connected": "Card is already linked. Clear before re-linking",
-  "mffs.network.cleared": "Cleared Network",
-  "mffs.network.link_failed": "Failed to link Network",
-  "mffs.network.linked": "Network Linked",
+  "mffs.network.already_connected": "Karta jest już połączona. Wyczyść kartę przed ponownym łączeniem",
+  "mffs.network.cleared": "Wyczyszczona sieć",
+  "mffs.network.link_failed": "Nie udało się połączyć z siecią",
+  "mffs.network.linked": "Sieć połączona",
   "tabs.modid.mffs_tab": "MFFS",
-  "tabs.modid.mffs_tab.tooltip": "Energy: %s/%s RF",
-  "tooltip.mffs.power_link_card.empty": "Not Connected",
-  "tooltip.mffs.power_link_card.network_name": "Network Name: %s"
+  "tabs.modid.mffs_tab.tooltip": "Energia: %s/%s RF",
+  "tooltip.mffs.power_link_card.empty": "Nie połączono",
+  "tooltip.mffs.power_link_card.network_name": "Nazwa sieci: %s"
 }
